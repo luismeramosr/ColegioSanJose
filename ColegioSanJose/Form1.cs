@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DB_interface;
+using Domain;
+using System.Collections.Generic;
 
 namespace ColegioSanJose
 {
@@ -15,6 +11,21 @@ namespace ColegioSanJose
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {   
+            DB db = new DB("192.168.1.100", "root", "", "test");
+            string query = "select * from `Tienda_Virtual`" +
+                           "where `ID_Tienda_Virtual` = 'TV0005'";
+
+            Tienda tienda = db.readTable(query,new Tienda())[0];
+
+            //foreach (Tienda tienda in tiendas)
+            //{
+              Console.WriteLine(tienda.nombre);
+            //}
+            
         }
     }
 }
