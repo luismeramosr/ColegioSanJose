@@ -42,6 +42,13 @@
   <ItemGroup>
     <Compile Include="Tienda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usermodel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB_interface\DB_interface.csproj">
+      <Project>{3bb5ee69-44fe-4292-947a-edc021cfa531}</Project>
+      <Name>DB_interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
