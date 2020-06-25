@@ -138,7 +138,7 @@ namespace ColegioSanJose
         #region Botones del menu (abrir forms)
         private void button1_Click(object sender, EventArgs e)
         {
-            Abrirformulario<Form1>();
+            Abrirformulario<FormBtnCursos>();
             button1.BackColor = Color.FromArgb(12, 61, 92);
         }
 
@@ -160,7 +160,7 @@ namespace ColegioSanJose
 
         private void cerrarform(object sender,FormClosedEventArgs e)
         {
-            if (Application.OpenForms["Form1"] == null)
+            if (Application.OpenForms["FormBtnCursos"] == null)
                 button1.BackColor = Color.FromArgb(28,28,28);
             //if (Application.OpenForms["Form2"] == null)
             //    button2.BackColor = Color.FromArgb(28, 28, 28);
