@@ -40,6 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alumno.cs" />
+    <Compile Include="apoderado.cs" />
+    <Compile Include="asistencia.cs" />
+    <Compile Include="chat_alumno_docente.cs" />
+    <Compile Include="clase.cs" />
+    <Compile Include="curso.cs" />
+    <Compile Include="cursos_por_seccion.cs" />
+    <Compile Include="docente.cs" />
+    <Compile Include="domicilio.cs" />
+    <Compile Include="evaluacion.cs" />
+    <Compile Include="libro.cs" />
+    <Compile Include="material_de_clase.cs" />
+    <Compile Include="matricula.cs" />
+    <Compile Include="notas_de_alumno_por_curso.cs" />
+    <Compile Include="pagos.cs" />
+    <Compile Include="prestamo_por_alumno.cs" />
+    <Compile Include="seccion.cs" />
     <Compile Include="Tienda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usermodel.cs" />
