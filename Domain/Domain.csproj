@@ -57,6 +57,7 @@
     <Compile Include="Pagos.cs" />
     <Compile Include="Prestamo_Por_Alumno.cs" />
     <Compile Include="Seccion.cs" />
+    <Compile Include="Tienda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
