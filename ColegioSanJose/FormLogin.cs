@@ -30,9 +30,9 @@ namespace ColegioSanJose
         {
             try
             {
-                if (txtdni.Text != "DNI USUARIO")
+                if (txtdni.Text != "")
                 {
-                    if (txtpass.Text != "CONTRASEÑA")
+                    if (txtpass.Text != "")
                     {
                         Usermodel user = new Usermodel();
                         var validLogin = user.LoginUser(txtdni.Text, txtpass.Text);
@@ -155,5 +155,10 @@ namespace ColegioSanJose
         }
 
         #endregion
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

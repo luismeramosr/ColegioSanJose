@@ -15,22 +15,18 @@ namespace ColegioSanJose
 
         private void btnTest_Click(object sender, EventArgs e)
         {   
-            DB db = new DB("192.168.1.100", "root", "", "test");
-            string query = "select * from `Tienda_Virtual`" +
-                           "where `ID_Tienda_Virtual` = 'TV0005'";
+            DB db = new DB("192.168.1.100","3307", "root", "123", "apolloma_Colegio");
 
-            Tienda tienda = db.readTable(query,new Tienda())[0];
-
-            //foreach (Tienda tienda in tiendas)
+            //foreach (Alumno alu in alumnos)
             //{
-              Console.WriteLine(tienda.nombre);
-            //}
-            
-        }
+            //Console.WriteLine(alu.idAlumno+ " " +alu.nombres);
+            //}          
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            Domicilio dom = new Domicilio("","SMP","",
+                                    "Av. Zarumilla 1121");
+
+            db.writeTable(dom);
+                                              
         }
     }
 }
