@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace ColegioSanJose
 {
-    public partial class Form1 : Form
+    public partial class FormTest : Form
     {
-        public Form1()
+        public FormTest()
         {
             InitializeComponent();
         }
@@ -22,10 +22,10 @@ namespace ColegioSanJose
             //Console.WriteLine(alu.idAlumno+ " " +alu.nombres);
             //}          
 
-            Domicilio dom = new Domicilio("","SMP","",
-                                    "Av. Zarumilla 1121");
+            Evaluacion ev = new Evaluacion("EV12345","","29/06/20",
+                                        "05/07/20", "www.google.com","tareita");
 
-            db.writeTable(dom);
+            db.writeTable(ev);
                                               
         }
     }

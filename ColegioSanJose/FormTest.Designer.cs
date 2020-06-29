@@ -1,6 +1,6 @@
 ﻿namespace ColegioSanJose
 {
-    partial class Form1
+    partial class FormTest
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,7 @@
             this.txtPss.Size = new System.Drawing.Size(131, 20);
             this.txtPss.TabIndex = 3;
             // 
-            // Form1
+            // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -65,7 +65,7 @@
             this.Controls.Add(this.txtPss);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnTest);
-            this.Name = "Form1";
+            this.Name = "FormTest";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
