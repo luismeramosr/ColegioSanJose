@@ -205,7 +205,7 @@
             this.panel3.Size = new System.Drawing.Size(409, 1);
             this.panel3.TabIndex = 16;
             // 
-            // Form1
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,7 +224,7 @@
             this.Controls.Add(this.txtpass);
             this.Controls.Add(this.txtdni);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "FormLogin";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

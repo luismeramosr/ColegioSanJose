@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using DB_interface;
+
 using Domain;
 using System.Runtime.InteropServices;
 
@@ -30,25 +31,46 @@ namespace ColegioSanJose
         {
             try
             {
-                if (txtdni.Text != "DNI USUARIO")
+                if (txtdni.Text != "")
                 {
-                    if (txtpass.Text != "CONTRASEÑA")
+                    if (txtpass.Text != "")
                     {
-                        Usermodel user = new Usermodel();
-                        var validLogin = user.LoginUser(txtdni.Text, txtpass.Text);
-                        //Console.WriteLine(validLogin);
-                        if (validLogin == true)
-                        {
-                            FormPrincipal mainMenu = new FormPrincipal();
-                            mainMenu.Show();
-                            //this.Hide();
+                        DB db = new DB("192.168.1.100", "3307", "root", "123", "apolloma_Colegio");
+                      
+                        if (txtdni.Text.Substring(0,1) == "D")
+                        { 
+                            Docente doc = new Docente();
+                            doc = db.readTable(string.Format("select * from `Docente`\n"+
+                                            "where `idDocente` = '{0}'", txtdni.Text),doc)[0];
+                            if (doc.password == txtpass.Text)
+                            {
+                                MessageBox.Show("Bienvenido");
+                            }else
+                            {
+                                MessageBox.Show("Contraseña inválida");
+                            }
                         }
-                        else
+                        else if (txtdni.Text.Substring(0, 1) == "A")
                         {
-                            msgError("DNI o Contraseña Incorrecta");
-                            txtpass.Clear();
-                            txtdni.Focus();
-                        }
+                            Alumno alu = new Alumno();
+                            alu = db.readTable(string.Format("select * from `Alumno`\n" +
+                                            "where `idAlumno` = '{0}'", txtdni.Text), alu)[0];
+                        }                      
+                           
+                        
+                                             
+                        //if (validLogin == true)
+                        //{
+                        //    FormPrincipal mainMenu = new FormPrincipal();
+                        //    mainMenu.Show();
+                        //    //this.Hide();
+                        //}
+                        //else
+                        //{
+                        //    msgError("DNI o Contraseña Incorrecta");
+                        //    txtpass.Clear();
+                        //    txtdni.Focus();
+                        //}
                     }
                     else
                     {
