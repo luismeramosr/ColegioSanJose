@@ -28,5 +28,10 @@ namespace ColegioSanJose
             db.writeTable(ev);
                                               
         }
+
+        private void FormTest_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

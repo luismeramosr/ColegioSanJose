@@ -40,7 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gbDiscapacidad = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtLugarNacimiento = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbSexo = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtDni = new System.Windows.Forms.TextBox();
@@ -110,8 +110,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbDiscapacidad.SuspendLayout();
+            this.gbSexo.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
@@ -223,7 +223,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.gbDiscapacidad);
             this.groupBox2.Controls.Add(this.txtDomicilio);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtProvincia);
@@ -234,7 +234,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtLugarNacimiento);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.gbSexo);
             this.groupBox2.Controls.Add(this.txtDni);
             this.groupBox2.Controls.Add(this.txtFechaNacimiento);
             this.groupBox2.Controls.Add(this.txtNombres);
@@ -254,17 +254,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Personales";
             // 
-            // groupBox4
+            // gbDiscapacidad
             // 
-            this.groupBox4.Controls.Add(this.radioButton4);
-            this.groupBox4.Controls.Add(this.radioButton3);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(813, 26);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(181, 73);
-            this.groupBox4.TabIndex = 21;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Certificado Discp";
+            this.gbDiscapacidad.Controls.Add(this.radioButton4);
+            this.gbDiscapacidad.Controls.Add(this.radioButton3);
+            this.gbDiscapacidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbDiscapacidad.Location = new System.Drawing.Point(813, 26);
+            this.gbDiscapacidad.Name = "gbDiscapacidad";
+            this.gbDiscapacidad.Size = new System.Drawing.Size(181, 73);
+            this.gbDiscapacidad.TabIndex = 21;
+            this.gbDiscapacidad.TabStop = false;
+            this.gbDiscapacidad.Text = "Certificado Discp";
             // 
             // radioButton4
             // 
@@ -375,17 +375,17 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "Lugar de Nacimiento";
             // 
-            // groupBox3
+            // gbSexo
             // 
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(13, 120);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(104, 57);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sexo";
+            this.gbSexo.Controls.Add(this.radioButton2);
+            this.gbSexo.Controls.Add(this.radioButton1);
+            this.gbSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSexo.Location = new System.Drawing.Point(13, 120);
+            this.gbSexo.Name = "gbSexo";
+            this.gbSexo.Size = new System.Drawing.Size(104, 57);
+            this.gbSexo.TabIndex = 10;
+            this.gbSexo.TabStop = false;
+            this.gbSexo.Text = "Sexo";
             // 
             // radioButton2
             // 
@@ -933,10 +933,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbDiscapacidad.ResumeLayout(false);
+            this.gbDiscapacidad.PerformLayout();
+            this.gbSexo.ResumeLayout(false);
+            this.gbSexo.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -954,7 +954,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox gbDiscapacidad;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.TextBox txtDomicilio;
@@ -967,7 +967,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtLugarNacimiento;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbSexo;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtDni;
