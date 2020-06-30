@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using DB_interface;
+using Domain;
 
 namespace ColegioSanJose
 {
@@ -117,43 +119,86 @@ namespace ColegioSanJose
         }
         #endregion
 
-            #region Validacion_Datos
-        private void button1_Click(object sender, EventArgs e)
+        #region Validacion_Datos
+        private bool validarDatos()
         {
+            bool validado = true;
+
             switch (cboSeccion.SelectedIndex.ToString())
             {
-                case "0": MessageBox.Show("Eliga una Seccion"); break;
-
+                case "0":
+                    MessageBox.Show("Eliga una Seccion");
+                    validado = false;
+                    break;
+                
             }
             switch (cboGradodeInstruccion.SelectedIndex.ToString())
             {
-                case "0": MessageBox.Show("Eliga un grado de instruccion"); break;
+                case "0":
+                    MessageBox.Show("Eliga un grado de instruccion");
+                    validado = false;
+                    break;
             }
             switch (cboGradodeInstruccion2.SelectedIndex.ToString())
             {
-                case "0": MessageBox.Show("Eliga un grado de instruccion"); break;
+                case "0":
+                    MessageBox.Show("Eliga un grado de instruccion");
+                    validado = false;
+                    break;
             }
             if (cboYear.SelectedIndex.ToString() == "0")
             {
                 MessageBox.Show("Selecionar Año");
+                validado = false;
             }
             else if (cboYear.SelectedIndex.ToString() == "2")
             {
                 if (cboGrado.SelectedIndex.ToString() == "6")
                 {
                     MessageBox.Show("Eliga grado del 1 al 5");
+                    validado = false;
                 }
             }
-            #endregion
-
+            return validado;
         }
+        #endregion
+
+        int i = 0;
+        #region Guardar_Datos
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (validarDatos())
+            {
+                DB db = new DB("192.168.1.100", "3307", "root", "123", "apolloma_Colegio");
+
+                string idseccion = cboYear.Text.Substring(0, 2).ToUpper() + cboGrado.Text +
+                                cboSeccion.Text;                            
+                
+                Seccion sec = new Seccion(idseccion,"10","D12345678");
+                int año = DateTime.Now.Year - 2000;
+                int mes = DateTime.Now.Month > 6 ? 2 : 1;
+
+                Alumno alu = new Alumno("A"+año+mes+"0000"+i,txtNombres.Text,
+                txtApellidoPaterno.Text,txtApellidoMaterno.Text,txtDni.Text,
+                txtTeflFijo.Text,txtTelefono.Text,txtFechaNacimiento.Text,
+                txtLugarNacimiento.Text,txtPais.Text,txtDepartamento.Text,
+                txtProvincia.Text,"do1234565","No tiene","No tiene",
+                "","","",txtDni.Text,"");
+
+                db.writeTable(alu);
+                i++;
+
+            }
+        }
+        #endregion
+
         private void btnTest_Click(object sender, EventArgs e)
         {
             #region Test
             txtNombres.Text = "Alfredo";
             txtApellidoMaterno.Text = "Sanchez";
             txtApellidoPaterno.Text = "Aguirre";
-            txtFechaNacimiento.Text = "09/01/2001";
+            txtFechaNacimiento.Text = "09-01-2001";
             txtDni.Text = "73025689";
             txtPais.Text = "Peru";
             txtDepartamento.Text = "Lima";
@@ -163,12 +208,12 @@ namespace ColegioSanJose
             txtNombreMadre.Text = "Karina";
             txtApellidoMaternoMadre.Text = "Torres";
             txtApellidoPaternoMadre.Text = "Sanchez";
-            txtFechaNM.Text = "29/12/1979";
+            txtFechaNM.Text = "29-12-1979";
             txtOcuM.Text = "Ama de Casa";
             txtNombrePadre.Text = "Javier";
             txtApellidoMaternoPadre.Text = "Gonzales";
             txtApellidoPaternoPadre.Text = "Aguirre";
-            txtFechaNP.Text = "14/01/1969";
+            txtFechaNP.Text = "14-01-1969";
             txtOcuP.Text = "Albañil";
             txtDistrito2.Text = "Av los cascanueces 885, La Victoria";
             txtTelefono.Text = "987564521";
