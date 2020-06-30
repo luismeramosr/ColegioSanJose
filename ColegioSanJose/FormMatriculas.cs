@@ -127,11 +127,11 @@ namespace ColegioSanJose
             }
             switch (cboGradodeInstruccion.SelectedIndex.ToString())
             {
-                case "0": MessageBox.Show("Eliga un grado"); break;
+                case "0": MessageBox.Show("Eliga un grado de instruccion"); break;
             }
             switch (cboGradodeInstruccion2.SelectedIndex.ToString())
             {
-                case "0": MessageBox.Show("Eliga un grado"); break;
+                case "0": MessageBox.Show("Eliga un grado de instruccion"); break;
             }
             if (cboYear.SelectedIndex.ToString() == "0")
             {

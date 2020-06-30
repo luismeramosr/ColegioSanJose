@@ -1,8 +1,13 @@
-﻿namespace Domain
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain
 {
     public class Alumno
     {
-
         public string idAlumno { get; set; }
         public string nombre { get; set; }
         public string apellido_paterno { get; set; }
@@ -23,36 +28,6 @@
         public string correo { get; set; }
         public string password { get; set; }
         public string descripcion_perfil { get; set; }
-
-        
-        public Alumno(string idAlumno, string nombre, string apellido_paterno, 
-                    string apellido_materno, string dni, string telefono_fijo, 
-                    string telefono, string fecha_nacimiento, string lugar_nacimiento, 
-                    string nacionalidad, string departamento, string provincia, 
-                    string domicilio, string certificado, string discapacidad, 
-                    string foto_url, string facebook_url, string correo, string password, 
-                    string descripcion_perfil)
-        {
-            this.idAlumno = idAlumno;
-            this.nombre = nombre;
-            this.apellido_paterno = apellido_paterno;
-            this.apellido_materno = apellido_materno;
-            this.dni = dni;
-            this.telefono_fijo = telefono_fijo;
-            this.telefono = telefono;
-            this.fecha_nacimiento = fecha_nacimiento;
-            this.lugar_nacimiento = lugar_nacimiento;
-            this.nacionalidad = nacionalidad;
-            this.departamento = departamento;
-            this.provincia = provincia;
-            Domicilio = domicilio;
-            this.certificado = certificado;
-            this.discapacidad = discapacidad;
-            this.foto_url = foto_url;
-            this.facebook_url = facebook_url;
-            this.correo = correo;
-            this.password = password;
-            this.descripcion_perfil = descripcion_perfil;
-        }
+     
     }
 }

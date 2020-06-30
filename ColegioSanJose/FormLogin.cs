@@ -35,7 +35,7 @@ namespace ColegioSanJose
                 {
                     if (txtpass.Text != "")
                     {
-                        DB db = new DB("192.168.1.100", "3307", "root", "123", "apolloma_Colegio");
+                        DB db = new DB("192.168.1.100", "3306", "root", "123", "apolloma_Colegio");
                       
                         if (txtdni.Text.Substring(0,1) == "D")
                         { 
