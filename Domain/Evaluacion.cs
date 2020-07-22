@@ -9,21 +9,18 @@ namespace Domain
     public class Evaluacion
     {
         public string idEvaluacion { get; set; }
-        public string descripcion { get; set; }
-        public string fecha_inicio { get; set; }
-        public string fecha_fin { get; set; }
-        public string documento { get; set; }
-        public string tipo { get; set; }
+        public string Seccion { get; set; }
+        public string Curso { get; set; }
+        public string data { get; set; }
 
-        public Evaluacion(string idEvaluacion, string descripcion, string fecha_inicio, string fecha_fin, string documento, string tipo)
+        public Evaluacion() { }
+
+        public Evaluacion(string idEvaluacion, string seccion, string curso, string data)
         {
             this.idEvaluacion = idEvaluacion;
-            this.descripcion = descripcion;
-            this.fecha_inicio = fecha_inicio;
-            this.fecha_fin = fecha_fin;
-            this.documento = documento;
-            this.tipo = tipo;
-        }
-
+            Seccion = seccion;
+            Curso = curso;
+            this.data = data;
+        }                              
     }
 }

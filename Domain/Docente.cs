@@ -9,15 +9,15 @@ namespace Domain
     public class Docente
     {
         public string idDocente { get; set; }
-        public string nombres { get; set; }
-        public string apellidos { get; set; }
-        public string dni { get; set; }
-        public string telefono { get; set; }
-        public string Domicilio { get; set; }
-        public string foto_url { get; set; }
-        public string facebook_url { get; set; }
-        public string correo { get; set; }
-        public string password { get; set; }
-        public string descripcion_perfil { get; set; }
+        public string Usuario { get; set; }
+
+        public Docente() { }
+
+        public Docente(string idDocente, string usuario)
+        {
+            this.idDocente = idDocente;
+            Usuario = usuario;
+        }
+
     }
 }

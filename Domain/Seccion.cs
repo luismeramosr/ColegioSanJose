@@ -8,15 +8,16 @@ namespace Domain
 {
     public class Seccion
     {
-        public Seccion(string idSeccion, string numAlumnos, string tutor)
+        public string idSeccion { get; set; }
+        public string num_alumnos { get; set; }
+
+        public Seccion() { }
+
+        public Seccion(string idSeccion, string num_alumnos)
         {
             this.idSeccion = idSeccion;
-            this.numAlumnos = numAlumnos;
-            Tutor = tutor;
+            this.num_alumnos = num_alumnos;
         }
 
-        public string idSeccion { get; set; }
-        public string numAlumnos { get; set; }
-        public string Tutor { get; set; }
     }
 }

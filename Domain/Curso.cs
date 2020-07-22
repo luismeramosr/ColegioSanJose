@@ -8,10 +8,20 @@ namespace Domain
 {
     class Curso
     {
-
         public string idCurso { get; set; }
+        public string Seccion { get; set; }
+        public string Docente { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public string rubrica { get; set; }
+
+        public Curso() { }
+
+        public Curso(string idCurso, string seccion, string docente, string nombre)
+        {
+            this.idCurso = idCurso;
+            Seccion = seccion;
+            Docente = docente;
+            this.nombre = nombre;
+        }
+
     }
 }

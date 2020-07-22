@@ -23,72 +23,14 @@ namespace ColegioSanJose
 
         private void btnlog_Click(object sender, EventArgs e)
         {
-            vali_login();
+            login(txtdni.Text, txtpass.Text);
         }
 
-        #region VALIDACION_LOGIN
-        public void vali_login()
+        DBManager db = new DBManager("gator4125.hostgator.com", "3306", "apolloma_root", "luis123xd", "apolloma_Colegio");
+        #region Login
+        private bool login(string user, string password)
         {
-            try
-            {
-                if (txtdni.Text != "")
-                {
-                    if (txtpass.Text != "")
-                    {
-                        DB db = new DB("192.168.1.100", "3306", "root", "123", "apolloma_Colegio");
-                      
-                        if (txtdni.Text.Substring(0,1) == "D")
-                        { 
-                            Docente doc = new Docente();
-                            doc = db.readTable(string.Format("select * from `Docente`\n"+
-                                            "where `idDocente` = '{0}'", txtdni.Text),doc)[0];
-                            if (doc.password == txtpass.Text)
-                            {
-                                MessageBox.Show("Bienvenido");
-                            }else
-                            {
-                                MessageBox.Show("Contraseña inválida");
-                            }
-                        }
-                        else if (txtdni.Text.Substring(0, 1) == "A")
-                        {
-                            Alumno alu = new Alumno();
-                            alu = db.readTable(string.Format("select * from `Alumno`\n" +
-                                            "where `idAlumno` = '{0}'", txtdni.Text), alu)[0];
-                        }                      
-                           
-                        
-                                             
-                        //if (validLogin == true)
-                        //{
-                        //    FormPrincipal mainMenu = new FormPrincipal();
-                        //    mainMenu.Show();
-                        //    //this.Hide();
-                        //}
-                        //else
-                        //{
-                        //    msgError("DNI o Contraseña Incorrecta");
-                        //    txtpass.Clear();
-                        //    txtdni.Focus();
-                        //}
-                    }
-                    else
-                    {
-                        msgError("Ingrese su Contraseña");
-                    }
-
-                }
-                else
-                {
-                    msgError("Ingrese su DNI");
-                }
-            }
-            catch
-            {
-                msgError("Problemas de conneción");
-            }
-
-           
+            return true;
         }
         #endregion
 
@@ -177,5 +119,10 @@ namespace ColegioSanJose
         }
 
         #endregion
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

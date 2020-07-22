@@ -15,18 +15,15 @@ namespace ColegioSanJose
 
         private void btnTest_Click(object sender, EventArgs e)
         {   
-            DB db = new DB("192.168.1.100","3307", "root", "123", "apolloma_Colegio");
+            DBManager db = new DBManager("192.168.1.100", "root", "123", "apolloma_Colegio");
 
-            //foreach (Alumno alu in alumnos)
-            //{
-            //Console.WriteLine(alu.idAlumno+ " " +alu.nombres);
-            //}          
+            List<Seccion> secciones = db.readTable(new Seccion());
 
-            Evaluacion ev = new Evaluacion("EV12345","","29/06/20",
-                                        "05/07/20", "www.google.com","tareita");
+            foreach (Seccion sec in secciones)
+            {
+                Console.WriteLine(sec.idSeccion);
+            }
 
-            db.writeTable(ev);
-                                              
         }
 
         private void FormTest_Load(object sender, EventArgs e)
