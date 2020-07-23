@@ -35,13 +35,11 @@
             this.lberror = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelpass = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btncerrar = new System.Windows.Forms.PictureBox();
             this.btnminimizar = new System.Windows.Forms.PictureBox();
-            this.labelMatricula = new System.Windows.Forms.LinkLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btncerrar)).BeginInit();
@@ -85,7 +83,7 @@
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciar.ForeColor = System.Drawing.Color.LightGray;
-            this.btnIniciar.Location = new System.Drawing.Point(297, 214);
+            this.btnIniciar.Location = new System.Drawing.Point(299, 222);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(408, 40);
             this.btnIniciar.TabIndex = 3;
@@ -128,30 +126,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
-            // labelpass
-            // 
-            this.labelpass.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.labelpass.AutoSize = true;
-            this.labelpass.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelpass.LinkColor = System.Drawing.Color.DimGray;
-            this.labelpass.Location = new System.Drawing.Point(434, 269);
-            this.labelpass.Name = "labelpass";
-            this.labelpass.Size = new System.Drawing.Size(150, 17);
-            this.labelpass.TabIndex = 0;
-            this.labelpass.TabStop = true;
-            this.labelpass.Text = "Olvide mi Contraseña";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(465, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 22);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "LOGIN";
-            // 
             // btncerrar
             // 
             this.btncerrar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -176,19 +150,6 @@
             this.btnminimizar.TabStop = false;
             this.btnminimizar.Click += new System.EventHandler(this.btnminimizar_Click);
             // 
-            // labelMatricula
-            // 
-            this.labelMatricula.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.labelMatricula.AutoSize = true;
-            this.labelMatricula.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMatricula.LinkColor = System.Drawing.Color.DimGray;
-            this.labelMatricula.Location = new System.Drawing.Point(466, 295);
-            this.labelMatricula.Name = "labelMatricula";
-            this.labelMatricula.Size = new System.Drawing.Size(85, 17);
-            this.labelMatricula.TabIndex = 14;
-            this.labelMatricula.TabStop = true;
-            this.labelMatricula.Text = "Matricularse";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
@@ -205,6 +166,17 @@
             this.panel3.Size = new System.Drawing.Size(409, 1);
             this.panel3.TabIndex = 16;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(465, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 22);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "LOGIN";
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,11 +185,9 @@
             this.ClientSize = new System.Drawing.Size(780, 330);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.labelMatricula);
             this.Controls.Add(this.btnminimizar);
             this.Controls.Add(this.btncerrar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelpass);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lberror);
             this.Controls.Add(this.btnIniciar);
@@ -228,7 +198,6 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -245,14 +214,12 @@
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Label lberror;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel labelpass;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btncerrar;
         private System.Windows.Forms.PictureBox btnminimizar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.LinkLabel labelMatricula;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label1;
     }
 }
 

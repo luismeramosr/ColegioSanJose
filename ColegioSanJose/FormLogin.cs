@@ -23,14 +23,43 @@ namespace ColegioSanJose
 
         private void btnlog_Click(object sender, EventArgs e)
         {
-            login(txtdni.Text, txtpass.Text);
+            if (!login(txtdni.Text, txtpass.Text))
+                msgError("El código o contraseña ingresado es incorrecto o no existe");         
         }
 
-        DBManager db = new DBManager("gator4125.hostgator.com", "3306", "apolloma_root", "luis123xd", "apolloma_Colegio");
+        DBManager db = new DBManager("192.168.1.100", "3306", "root", "123", "apolloma_Colegio");
         #region Login
         private bool login(string user, string password)
         {
-            return true;
+            Usuario newUser = db.readRow(new Usuario(), user);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+
+            if(newUser != null)
+            {
+                if (newUser.isAlumno() && newUser.password == password)
+                {
+                    Console.WriteLine("Ingreso: " + newUser.idUsuario);
+                    Alumno alu = db.readRow(new Alumno(), user);
+                    data.Add("userType", "Alumno");
+                    data.Add("user", alu);
+                    (new FormPrincipal(data)).Show();
+                    this.Close();
+                    return true;
+                }
+                else if (newUser.isDocente() && newUser.password == password)
+                {
+                    Console.WriteLine("Ingreso: " + newUser.idUsuario);
+                    Docente doc = db.readRow(new Docente(), user);
+                    data.Add("userType", "Docente");
+                    data.Add("user", doc);
+                    (new FormPrincipal(data)).Show();
+                    this.Close();
+                    return true;
+                }
+                else return false;                
+            }
+            else return false;
+
         }
         #endregion
 
@@ -119,10 +148,5 @@ namespace ColegioSanJose
         }
 
         #endregion
-
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

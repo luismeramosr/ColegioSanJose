@@ -13,10 +13,11 @@ namespace ColegioSanJose
 {
     public partial class FormPrincipal : Form
     {
-        public FormPrincipal()
+        public FormPrincipal(Dictionary<string, object> data)
         {
             InitializeComponent();
-            Designsubmenu(); 
+            Designsubmenu();
+            btnPerfil.Text = data["userType"].ToString();
         }
 
         #region Forma del panelcontenedor
@@ -136,32 +137,12 @@ namespace ColegioSanJose
         #endregion
 
         #region Botones del menu (abrir forms)
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Abrirformulario<FormBtnCursos>();
-            button1.BackColor = Color.FromArgb(12, 61, 92);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //Abrirformulario<Form2>();
-            //button2.BackColor = Color.FromArgb(12, 61, 92);
-        }
-
         
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //Abrirformulario<Form3>();
-            //button3.BackColor = Color.FromArgb(12, 61, 92);
-        }
-
-       
 
         private void cerrarform(object sender,FormClosedEventArgs e)
         {
             if (Application.OpenForms["FormBtnCursos"] == null)
-                button1.BackColor = Color.FromArgb(28,28,28);
+                btnPerfil.BackColor = Color.FromArgb(28,28,28);
             //if (Application.OpenForms["Form2"] == null)
             //    button2.BackColor = Color.FromArgb(28, 28, 28);
             //if (Application.OpenForms["Form3"] == null)
@@ -237,9 +218,15 @@ namespace ColegioSanJose
         }
         private void btnconf_Click(object sender, EventArgs e)
         {
-            showsubmenu(panelDespegable);
-            
+            showsubmenu(panelDespegable);            
         }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            (new FormLogin()).Show();
+        }
+
         private void btnconfuser_Click(object sender, EventArgs e)
         {
             //Abrirformulario<Form4_submenu>();

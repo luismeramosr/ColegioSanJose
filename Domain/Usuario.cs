@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Usuario
+    public class Usuario
     {
         public string idUsuario { get; set; }
         public string password { get; set; }
@@ -19,6 +19,20 @@ namespace Domain
             this.idUsuario = idUsuario;
             this.password = password;
             this.tipo = tipo;
+        }
+
+        public bool isAlumno()
+        {
+            if (tipo == "A")
+                return true;
+            else return false;
+        }
+
+        public bool isDocente()
+        {
+            if (tipo == "D")
+                return true;
+            else return false;
         }
     }
 }
