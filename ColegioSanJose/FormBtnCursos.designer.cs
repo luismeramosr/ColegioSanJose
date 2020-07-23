@@ -163,11 +163,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.LightGray;
-            this.label3.Location = new System.Drawing.Point(56, 7);
+            this.label3.Location = new System.Drawing.Point(9, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 23);
+            this.label3.Size = new System.Drawing.Size(171, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Historia";
+            this.label3.Text = "Historia Universal";
             // 
             // pictureBox3
             // 
@@ -206,11 +206,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(5, 8);
+            this.label2.Location = new System.Drawing.Point(53, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 22);
+            this.label2.Size = new System.Drawing.Size(87, 22);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Ciencias Naturales";
+            this.label2.Text = "Quimica";
             // 
             // pictureBox2
             // 

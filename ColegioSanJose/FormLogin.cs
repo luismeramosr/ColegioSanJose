@@ -26,7 +26,8 @@ namespace ColegioSanJose
             login(txtdni.Text, txtpass.Text);
         }
 
-        DBManager db = new DBManager("gator4125.hostgator.com", "3306", "apolloma_root", "luis123xd", "apolloma_Colegio");
+        DBManager db = new DBManager("localhost", "3306", "apolloma_root", "SYSTEM", "apolloma_Colegio");
+
         #region Login
         private bool login(string user, string password)
         {
