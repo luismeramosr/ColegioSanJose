@@ -67,7 +67,6 @@
             this.Controls.Add(this.btnTest);
             this.Name = "FormTest";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FormTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using MySql.Data.MySqlClient;
 
-
-
 namespace DB_interface
 {
     public class DBManager
@@ -24,15 +22,16 @@ namespace DB_interface
             "username={2};password={3};database={4}", hostIP, port, username, password, databaseName));
         }
 
-        public void insertRow<T>(T obj)
+        public void insertRow<T>()
         {
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            Type t = typeof(T);
+            PropertyInfo[] props = t.GetProperties();
             string query = string.Format("insert into `{0}` values(",
-                                         obj.GetType().Name);
+                                         t.Name);
 
             foreach (PropertyInfo prop in props)
             {
-                query += string.Format("'{0}',", prop.GetValue(obj.GetType()));
+                query += string.Format("'{0}',", prop.GetValue(t));
             }
 
             query = query.Substring(0, (query.Length - 1)) + ");";
@@ -50,14 +49,15 @@ namespace DB_interface
             }
         }
 
-        public List<T> readTable<T>(T obj)
+        public List<T> readTable<T>()
         {
+            Type t = typeof(T);
             List<T> tableData = new List<T>();
             T rowData;
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            PropertyInfo[] props = t.GetProperties();
 
             string query = string.Format("select * from {0};",
-                                         obj.GetType().Name);
+                                         t.Name);
 
             try
             {
@@ -67,7 +67,7 @@ namespace DB_interface
 
                 while (reader.Read())
                 {
-                    rowData = (T)Activator.CreateInstance(obj.GetType());                    
+                    rowData = new InstanceOf<T>().Create();                 
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
@@ -86,15 +86,16 @@ namespace DB_interface
             }
         }
 
-        public List<T> readTable<T>(T obj, string objectID, int column)
+        public List<T> readTable<T>(string objectID, int column)
         {
+            Type t = typeof(T);
             List<T> tableData = new List<T>();
             T rowData;
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            PropertyInfo[] props = t.GetProperties();
 
             string query = string.Format("select * from {0} "+
                                          "where {1} = '{2}';",
-                                         obj.GetType().Name,
+                                         t.Name,
                                          props[column].Name,
                                          objectID);
 
@@ -106,7 +107,7 @@ namespace DB_interface
 
                 while (reader.Read())
                 {
-                    rowData = (T)Activator.CreateInstance(obj.GetType());
+                    rowData = new InstanceOf<T>().Create();
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
@@ -125,14 +126,15 @@ namespace DB_interface
             }
         }
 
-        public T readRow<T>(T obj, string objectID)
+        public T readRow<T>(string objectID)
         {
-            T rowData = (T)Activator.CreateInstance(obj.GetType());
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            Type anyType = typeof(T);
+            T rowData = new InstanceOf<T>().Create();
+            PropertyInfo[] props = anyType.GetProperties();
 
             string query = string.Format("select * from {0} "+
                                          "where {1} = '{2}';",
-                                         obj.GetType().Name,
+                                         anyType.Name,
                                          props[0].Name,
                                          objectID);
 
@@ -159,21 +161,22 @@ namespace DB_interface
             }
         }
         
-        public void updateRow<T>(T obj)
+        public void updateRow<T>()
         {
+            Type t = typeof(T);
             string query = string.Format("update {0} "+
-                                         "set ", obj.GetType().Name);
+                                         "set ", t.Name);
 
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            PropertyInfo[] props = t.GetProperties();
 
             foreach (PropertyInfo prop in props)
             {
-                query += prop.Name + " = '" + prop.GetValue(obj.GetType()) + "',";
+                query += prop.Name + " = '" + prop.GetValue(t) + "',";
             }
             query = query.Substring(0, (query.Length - 1));
             query += string.Format("where {0} = '{1}';",
                                     props[0].Name,
-                                    props[0].GetValue(obj.GetType()));
+                                    props[0].GetValue(t));
 
             try
             {
@@ -188,14 +191,15 @@ namespace DB_interface
             }
         }
 
-        public void deleteRow<T>(T obj)
+        public void deleteRow<T>()
         {
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            Type t = typeof(T);
+            PropertyInfo[] props = t.GetProperties();
             string query = string.Format("delete from {0} "+
                                         "where {1} = '{2}';",
-                                        obj.GetType().Name,
+                                        t.Name,
                                         props[0].Name,
-                                        props[0].GetValue(obj.GetType()));
+                                        props[0].GetValue(t));
 
             try
             {

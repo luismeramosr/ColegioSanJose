@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DB_interface;
 
@@ -31,7 +26,7 @@ namespace ColegioSanJose
         #region Login
         private bool login(string user, string password)
         {
-            Usuario newUser = db.readRow(new Usuario(), user);
+            Usuario newUser = db.readRow<Usuario>(user);
             Dictionary<string, object> data = new Dictionary<string, object>();
 
             if(newUser != null)
@@ -39,7 +34,7 @@ namespace ColegioSanJose
                 if (newUser.isAlumno() && newUser.password == password)
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
-                    Alumno alu = db.readRow(new Alumno(), user);
+                    Alumno alu = db.readRow<Alumno>(user);
                     data.Add("userType", "Alumno");
                     data.Add("user", alu);
                     (new FormPrincipal(data)).Show();
@@ -49,7 +44,7 @@ namespace ColegioSanJose
                 else if (newUser.isDocente() && newUser.password == password)
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
-                    Docente doc = db.readRow(new Docente(), user);
+                    Docente doc = db.readRow<Docente>(user);
                     data.Add("userType", "Docente");
                     data.Add("user", doc);
                     (new FormPrincipal(data)).Show();
