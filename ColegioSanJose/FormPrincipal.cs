@@ -13,12 +13,16 @@ namespace ColegioSanJose
 {
     public partial class FormPrincipal : Form
     {
+        Dictionary<string, object> data;
         public FormPrincipal(Dictionary<string, object> data)
         {
             InitializeComponent();
             Designsubmenu();
             btnPerfil.Text = data["userType"].ToString();
+            this.data = data;
         }
+
+        
 
         #region Forma del panelcontenedor
         //RESIZE METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO EN TIEMPO DE EJECUCION ----------------------------------------------------------
@@ -77,12 +81,17 @@ namespace ColegioSanJose
             ly = this.Location.Y;
             sw = this.Size.Width;
             sh = this.Size.Height;
+            
+          
 
+            
+
+            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            
+            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             btnmaximizar.Visible = false;
             btnrestaurar.Visible = true;
 
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
         }
         private void btnrestaurar_Click(object sender, EventArgs e)
         {
@@ -110,13 +119,14 @@ namespace ColegioSanJose
         #endregion
 
         #region Metodo para abrir Formularios dentro el panel
-        private void Abrirformulario<MiForm>() where MiForm : Form, new()
+        private void Abrirformulario<MiForm>(Dictionary<String,object> data) where MiForm : Form, new()
         {
             Form formulario;
             formulario = panelForm.Controls.OfType<MiForm>().FirstOrDefault();//busca en la coleccion del form
             //si el form no existe
             if (formulario == null)
             {
+                
                 formulario = new MiForm();
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
@@ -136,17 +146,52 @@ namespace ColegioSanJose
         }
         #endregion
 
+       public void AbrirFormularioCurso()
+        {
+            Form formulario;
+            formulario = panelForm.Controls.OfType<FormBtnCursos>().FirstOrDefault();//busca en la coleccion del form
+            //si el form no existe
+            if (formulario == null)
+            {
+
+                formulario = new FormBtnCursos(data);
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panelForm.Controls.Add(formulario);
+                panelForm.Tag = formulario;
+                formulario.BringToFront();
+                formulario.Show();
+                formulario.FormClosed += new FormClosedEventHandler(cerrarform);
+
+            }
+            //si el form existe
+            else
+            {
+                formulario.BringToFront();
+            }
+
+        }
+
+
+
         #region Botones del menu (abrir forms)
-        
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioCurso();
+            btnCursos.BackColor = Color.FromArgb(12, 61, 92);
+
+        }
 
         private void cerrarform(object sender,FormClosedEventArgs e)
         {
+            //if (Application.OpenForms["Form5"] == null)
+            //    btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
             if (Application.OpenForms["FormBtnCursos"] == null)
-                btnPerfil.BackColor = Color.FromArgb(28,28,28);
-            //if (Application.OpenForms["Form2"] == null)
-            //    button2.BackColor = Color.FromArgb(28, 28, 28);
+                btnCursos.BackColor = Color.FromArgb(28, 28, 28);
             //if (Application.OpenForms["Form3"] == null)
-            //    button3.BackColor = Color.FromArgb(28, 28, 28);
+            //    btnHorario.BackColor = Color.FromArgb(28, 28, 28);
             ////submenu
             //if (Application.OpenForms["Form4_submenu"] == null)
             //    btnconfuser.BackColor = Color.FromArgb(45, 45, 48);
@@ -226,6 +271,8 @@ namespace ColegioSanJose
             this.Close();
             (new FormLogin()).Show();
         }
+
+        
 
         private void btnconfuser_Click(object sender, EventArgs e)
         {

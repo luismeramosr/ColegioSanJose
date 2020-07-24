@@ -27,7 +27,8 @@ namespace ColegioSanJose
                 msgError("El código o contraseña ingresado es incorrecto o no existe");         
         }
 
-        DBManager db = new DBManager("192.168.1.100", "3306", "root", "123", "apolloma_Colegio");
+        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+
         #region Login
         private bool login(string user, string password)
         {
@@ -40,8 +41,10 @@ namespace ColegioSanJose
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
                     Alumno alu = db.readRow(new Alumno(), user);
+                    List<Curso> cur = db.readTable(new Curso(), alu.Seccion, 1);
                     data.Add("userType", "Alumno");
                     data.Add("user", alu);
+                    data.Add("cursos", cur);
                     (new FormPrincipal(data)).Show();
                     this.Close();
                     return true;
