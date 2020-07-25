@@ -119,7 +119,7 @@ namespace ColegioSanJose
         #endregion
 
         #region Metodo para abrir Formularios dentro el panel
-        private void Abrirformulario<MiForm>(Dictionary<String,object> data) where MiForm : Form, new()
+        private void Abrirformulario<MiForm>() where MiForm : Form, new()
         {
             Form formulario;
             formulario = panelForm.Controls.OfType<MiForm>().FirstOrDefault();//busca en la coleccion del form
@@ -146,7 +146,8 @@ namespace ColegioSanJose
         }
         #endregion
 
-       public void AbrirFormularioCurso()
+        #region AbrirFormulario btnCursos     
+        public void AbrirFormularioCurso()
         {
             Form formulario;
             formulario = panelForm.Controls.OfType<FormBtnCursos>().FirstOrDefault();//busca en la coleccion del form
@@ -172,7 +173,7 @@ namespace ColegioSanJose
             }
 
         }
-
+        #endregion
 
 
         #region Botones del menu (abrir forms)
@@ -181,13 +182,19 @@ namespace ColegioSanJose
         {
             AbrirFormularioCurso();
             btnCursos.BackColor = Color.FromArgb(12, 61, 92);
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Abrirformulario<FormPerfilUser>();
+            btnPerfil.BackColor = Color.FromArgb(12, 61, 92);
 
         }
 
         private void cerrarform(object sender,FormClosedEventArgs e)
         {
-            //if (Application.OpenForms["Form5"] == null)
-            //    btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
+            if (Application.OpenForms["FormPerfilUser"] == null)
+                btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
             if (Application.OpenForms["FormBtnCursos"] == null)
                 btnCursos.BackColor = Color.FromArgb(28, 28, 28);
             //if (Application.OpenForms["Form3"] == null)

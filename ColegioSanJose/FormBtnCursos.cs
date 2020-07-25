@@ -22,7 +22,7 @@ namespace ColegioSanJose
         {
             InitializeComponent();
             this.data = data;
-            imagenes.Add("Álgebra", @"C:\Users\littman\Documents\GitHub\ColegioSanJose\ColegioSanJose\Resources\algebra.png");
+            imagenes.Add("Álgebra", @"C:\Users\littman\Documents\GitHub\ColegioSanJose\ColegioSanJose\Resources\1.png");
         }
 
 

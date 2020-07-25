@@ -56,7 +56,7 @@
             this.txtdni.Name = "txtdni";
             this.txtdni.Size = new System.Drawing.Size(407, 20);
             this.txtdni.TabIndex = 1;
-            this.txtdni.Text = "DNI USUARIO";
+            this.txtdni.Text = "ID USUARIO";
             this.txtdni.Enter += new System.EventHandler(this.txtdni_Enter);
             this.txtdni.Leave += new System.EventHandler(this.txtdni_Leave);
             // 

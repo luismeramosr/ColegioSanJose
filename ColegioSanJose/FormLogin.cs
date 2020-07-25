@@ -77,7 +77,7 @@ namespace ColegioSanJose
         #region TEXTBOX
         private void txtdni_Enter(object sender, EventArgs e)
         {
-            if(txtdni.Text == "DNI USUARIO")
+            if(txtdni.Text == "ID USUARIO")
             {
                 txtdni.Text = "";
                 txtdni.ForeColor = Color.LightGray;
@@ -88,7 +88,7 @@ namespace ColegioSanJose
         {
             if(txtdni.Text == "")
             {
-                txtdni.Text = "DNI USUARIO";
+                txtdni.Text = "ID USUARIO";
                 txtdni.ForeColor = Color.DimGray;
             }
         }
