@@ -16,7 +16,10 @@ namespace ColegioSanJose
             Designsubmenu();
             this.data = data;
             btnPerfil.Text = data["userType"].ToString();
+            this.data = data;
         }
+
+        
 
         #region Forma del panelcontenedor
         //RESIZE METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO EN TIEMPO DE EJECUCION ----------------------------------------------------------
@@ -76,15 +79,16 @@ namespace ColegioSanJose
             ly = this.Location.Y;
             sw = this.Size.Width;
             sh = this.Size.Height;
-            isMaximized = true;
-            btnmaximizar.Visible = false;
-            btnrestaurar.Visible = true;
-
+            
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             panelForm.Size = Size;
             panelForm.Location = Location;
+            btnmaximizar.Visible = false;
+            btnrestaurar.Visible = true;
             actualizarForm();
+
         }
 
         private void btnrestaurar_Click(object sender, EventArgs e)
@@ -140,6 +144,7 @@ namespace ColegioSanJose
             //si el form no existe
             if (formulario == null)
             {
+                
                 formulario = new MiForm();
                 formulario.Size = panelForm.Size;
                 formulario.TopLevel = false;
@@ -185,16 +190,28 @@ namespace ColegioSanJose
         }
 
         #region Botones del menu (abrir forms)
-        
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioCurso();
+            btnCursos.BackColor = Color.FromArgb(12, 61, 92);
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Abrirformulario<FormPerfilUser>();
+            btnPerfil.BackColor = Color.FromArgb(12, 61, 92);
+
+        }
 
         private void cerrarform(object sender,FormClosedEventArgs e)
         {
+            if (Application.OpenForms["FormPerfilUser"] == null)
+                btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
             if (Application.OpenForms["FormBtnCursos"] == null)
-                btnPerfil.BackColor = Color.FromArgb(28,28,28);
-            //if (Application.OpenForms["Form2"] == null)
-            //    button2.BackColor = Color.FromArgb(28, 28, 28);
+                btnCursos.BackColor = Color.FromArgb(28, 28, 28);
             //if (Application.OpenForms["Form3"] == null)
-            //    button3.BackColor = Color.FromArgb(28, 28, 28);
+            //    btnHorario.BackColor = Color.FromArgb(28, 28, 28);
             ////submenu
             //if (Application.OpenForms["Form4_submenu"] == null)
             //    btnconfuser.BackColor = Color.FromArgb(45, 45, 48);

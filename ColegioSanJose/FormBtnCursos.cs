@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using Domain;
-
+using DB_interface;
+using ColegioSanJose;
 
 namespace ColegioSanJose
 {
+
     public partial class FormBtnCursos : Form
     {
         Dictionary<string, Image> images;
@@ -68,6 +69,34 @@ namespace ColegioSanJose
 
         private void reloadPanel(object sender, EventArgs e)
         {
+
+        }
+
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.Cursor = Cursors.Hand;
+
+        }
+
+        private void pictureBox6_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox6.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox6.Cursor = Cursors.Default;
+        }
+        #endregion
+
+        private void FormBtnCursos_Load(object sender, EventArgs e)
+        {
+            List<Curso> cursos =(List<Curso>) data["cursos"];
+            foreach (Curso c in cursos)
+            {
+                if (c.nombre == "Álgebra")
+                {
+                    pictureBox1.Image = Image.FromFile(imagenes[c.nombre]);
+                }
+                Console.WriteLine(c.nombre);
+            }
 
         }
     }

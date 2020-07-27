@@ -23,6 +23,8 @@ namespace ColegioSanJose
         }
 
         DBManager db = new DBManager("192.168.1.100","root", "123", "apolloma_Colegio");
+        //DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+
         #region Login
         private bool login(string user, string password)
         {
@@ -71,7 +73,7 @@ namespace ColegioSanJose
         #region TEXTBOX
         private void txtdni_Enter(object sender, EventArgs e)
         {
-            if(txtdni.Text == "DNI USUARIO")
+            if(txtdni.Text == "ID USUARIO")
             {
                 txtdni.Text = "";
                 txtdni.ForeColor = Color.LightGray;
@@ -82,7 +84,7 @@ namespace ColegioSanJose
         {
             if(txtdni.Text == "")
             {
-                txtdni.Text = "DNI USUARIO";
+                txtdni.Text = "ID USUARIO";
                 txtdni.ForeColor = Color.DimGray;
             }
         }
