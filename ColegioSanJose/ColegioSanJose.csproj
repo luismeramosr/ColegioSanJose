@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CursoComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CursoComponent.Designer.cs">
+      <DependentUpon>CursoComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CursoComponent.resx">
+      <DependentUpon>CursoComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>

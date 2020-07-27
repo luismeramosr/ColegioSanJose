@@ -7,51 +7,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using Domain;
 
 
 namespace ColegioSanJose
 {
     public partial class FormBtnCursos : Form
     {
-        public FormBtnCursos()
+        Dictionary<string, Image> images;
+        List<Curso> cursos;
+
+        public FormBtnCursos(Dictionary<string, object> data)
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            string[] pathToImages = Directory.GetFiles(@"..\..\Resources");
+            cursos = (List<Curso>)data["cursos"];
+            images = new Dictionary<string, Image>();            
+            int i = 0;
+            foreach (Curso cur in cursos)
+            {
+                images.Add(cur.nombre, Image.FromFile(pathToImages[i]));
+                i++;
+            }
+            
+            
+
         }
 
-        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        private void loadCurso(string nomCurso, Image imgCurso, Point location)
         {
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.Cursor = Cursors.Hand;
+            CursoComponent newCurso = createCursoPanel(nomCurso, imgCurso);
+            Controls.Add(newCurso);
+            newCurso.Location = location;
         }
 
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        private CursoComponent createCursoPanel(string name,Image img)
         {
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.Cursor = Cursors.Default;
+            CursoComponent cursoControl = new CursoComponent(name, img);
+            cursoControl.BringToFront();
+            cursoControl.Show();
+            return cursoControl;
         }
 
-        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        private T[,] Make2DArray<T>(T[] input, int rowCount, int colCount)
         {
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.Cursor = Cursors.Hand;
+            T[,] output = new T[rowCount, colCount];
+            if (rowCount * colCount <= input.Length)
+            {
+                for (int i = 0; i < rowCount; i++)
+                {
+                    for (int j = 0; j < colCount; j++)
+                    {
+                        output[i, j] = input[i * colCount + j];
+                    }
+                }
+            }
+            return output;
         }
 
-        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        private void reloadPanel(object sender, EventArgs e)
         {
-            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox2.Cursor = Cursors.Default;
-        }
 
-        private void pictureBox3_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.Cursor = Cursors.Hand;
-        }
-
-        private void pictureBox3_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox3.Cursor = Cursors.Default;
         }
     }
 }

@@ -234,6 +234,7 @@
             // btnCerrarSesion
             // 
             this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
             this.btnCerrarSesion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
             this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
@@ -242,9 +243,9 @@
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.Image")));
             this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(3, 427);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 430);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(221, 40);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(220, 40);
             this.btnCerrarSesion.TabIndex = 8;
             this.btnCerrarSesion.Text = "Cerrar Sesion";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -321,6 +322,7 @@
             this.btnCursos.TabIndex = 1;
             this.btnCursos.Text = "Cursos";
             this.btnCursos.UseVisualStyleBackColor = true;
+            this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
             // 
             // btnPerfil
             // 
@@ -338,6 +340,7 @@
             this.btnPerfil.Size = new System.Drawing.Size(220, 40);
             this.btnPerfil.TabIndex = 0;
             this.btnPerfil.UseVisualStyleBackColor = true;
+            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
             // 
             // panelBarra
             // 

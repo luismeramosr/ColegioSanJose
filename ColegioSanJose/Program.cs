@@ -16,7 +16,7 @@ namespace ColegioSanJose
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            (new FormTest()).Show();
+            (new FormLogin()).Show();
             Application.Run();
         }
     }
