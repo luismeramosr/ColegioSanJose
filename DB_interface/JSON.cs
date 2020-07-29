@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace DB_interface
+namespace Datalib
 {
     public class JSON
     {

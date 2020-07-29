@@ -80,7 +80,7 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1000, 500);
+            this.panelContenedor.Size = new System.Drawing.Size(1000, 527);
             this.panelContenedor.TabIndex = 0;
             // 
             // panelForm
@@ -92,7 +92,7 @@
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForm.Location = new System.Drawing.Point(220, 30);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(780, 470);
+            this.panelForm.Size = new System.Drawing.Size(780, 497);
             this.panelForm.TabIndex = 2;
             // 
             // lbfecha
@@ -101,7 +101,7 @@
             this.lbfecha.AutoSize = true;
             this.lbfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbfecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbfecha.Location = new System.Drawing.Point(143, 367);
+            this.lbfecha.Location = new System.Drawing.Point(143, 380);
             this.lbfecha.Name = "lbfecha";
             this.lbfecha.Size = new System.Drawing.Size(126, 46);
             this.lbfecha.TabIndex = 2;
@@ -113,7 +113,7 @@
             this.lbHora.AutoSize = true;
             this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.lbHora.Location = new System.Drawing.Point(221, 249);
+            this.lbHora.Location = new System.Drawing.Point(221, 262);
             this.lbHora.Name = "lbHora";
             this.lbHora.Size = new System.Drawing.Size(249, 91);
             this.lbHora.TabIndex = 1;
@@ -123,7 +123,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(210, -18);
+            this.pictureBox1.Location = new System.Drawing.Point(210, -5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(346, 293);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -148,7 +148,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 30);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 470);
+            this.panelMenu.Size = new System.Drawing.Size(220, 497);
             this.panelMenu.TabIndex = 1;
             // 
             // panelDespegable
@@ -226,7 +226,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.panel4.Location = new System.Drawing.Point(0, 430);
+            this.panel4.Location = new System.Drawing.Point(0, 457);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(5, 40);
             this.panel4.TabIndex = 9;
@@ -243,7 +243,7 @@
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesion.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.Image")));
             this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(3, 430);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 457);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(220, 40);
             this.btnCerrarSesion.TabIndex = 8;
@@ -426,7 +426,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.ClientSize = new System.Drawing.Size(1000, 527);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(650, 400);

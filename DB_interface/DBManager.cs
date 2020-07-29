@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using MySql.Data.MySqlClient;
 
-namespace DB_interface
+namespace Datalib
 {
     public class DBManager
     {

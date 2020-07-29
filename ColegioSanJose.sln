@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColegioSanJose", "ColegioSanJose\ColegioSanJose.csproj", "{8DB735A2-02DD-4731-8872-196CD29BD831}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB_interface", "DB_interface\DB_interface.csproj", "{3BB5EE69-44FE-4292-947A-EDC021CFA531}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalib", "DB_interface\Datalib.csproj", "{3BB5EE69-44FE-4292-947A-EDC021CFA531}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{1927B7E9-8F01-49D2-BEDB-29405A840583}"
 EndProject

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DB_interface
+namespace Datalib
 {
     public class InstanceOf<T>
     {

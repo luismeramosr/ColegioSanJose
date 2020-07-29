@@ -193,7 +193,7 @@ namespace ColegioSanJose
 
         private void btnCursos_Click(object sender, EventArgs e)
         {
-            AbrirFormularioCurso();
+            abrirFormBtnCursos();
             btnCursos.BackColor = Color.FromArgb(12, 61, 92);
         }
 
@@ -290,16 +290,6 @@ namespace ColegioSanJose
         {
             this.Close();
             (new FormLogin()).Show();
-        }
-
-        private void btnCursos_Click(object sender, EventArgs e)
-        {
-            abrirFormBtnCursos();
-        }
-
-        private void btnPerfil_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnconfuser_Click(object sender, EventArgs e)

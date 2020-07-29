@@ -1,61 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
-using DB_interface;
-using ColegioSanJose;
+using System.IO;
+using System.Resources;
+//using System.Assembly
 
 namespace ColegioSanJose
 {
 
     public partial class FormBtnCursos : Form
     {
-        Dictionary<string, Image> images;
         List<Curso> cursos;
+        List<CursoComponent> cursoComponents;
+        int initialRows = 5;
+        int initialCols = 3;
 
         public FormBtnCursos(Dictionary<string, object> data)
         {
             InitializeComponent();
-            string[] pathToImages = Directory.GetFiles(@"..\..\Resources");
             cursos = (List<Curso>)data["cursos"];
-            images = new Dictionary<string, Image>();            
-            int i = 0;
+            cursoComponents = new List<CursoComponent>();
+                      
+            int i = 1;
             foreach (Curso cur in cursos)
             {
-                images.Add(cur.nombre, Image.FromFile(pathToImages[i]));
+                Image img = Image.FromFile(string.Format(@"..\..\Resources\{0}.png",i));  
+                cursoComponents.Add(new CursoComponent(cur.nombre, img));
                 i++;
+            }            
+
+            Controls.AddRange(cursoComponents.ToArray());
+            orderComponents(initialCols, initialRows);
+        }
+
+        private void orderComponents(int rows, int columns)
+        {
+            CursoComponent[,] cursos = Make2DArray(cursoComponents.ToArray(), 
+                                                    rows, columns);
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    cursos[i, j].relocate(new Point(50 + ((cursos[i, j].Width + 50) * j),
+                                        27 + ((cursos[i, j].Height + 27) * i)));
+                }
             }
-            
-            
-
         }
 
-        private void loadCurso(string nomCurso, Image imgCurso, Point location)
+        private int getColumns()
         {
-            CursoComponent newCurso = createCursoPanel(nomCurso, imgCurso);
-            Controls.Add(newCurso);
-            newCurso.Location = location;
-        }
-
-        private CursoComponent createCursoPanel(string name,Image img)
-        {
-            CursoComponent cursoControl = new CursoComponent(name, img);
-            cursoControl.BringToFront();
-            cursoControl.Show();
-            return cursoControl;
+            return Width / 240;
         }
 
         private T[,] Make2DArray<T>(T[] input, int rowCount, int colCount)
         {
-            T[,] output = new T[rowCount, colCount];
+            T[,] output = new T[rowCount, colCount];            
+
             if (rowCount * colCount <= input.Length)
-            {
+            {               
                 for (int i = 0; i < rowCount; i++)
                 {
                     for (int j = 0; j < colCount; j++)
@@ -63,41 +67,33 @@ namespace ColegioSanJose
                         output[i, j] = input[i * colCount + j];
                     }
                 }
+            }else if (input.Length / (rowCount*colCount) != 1)
+            {
+                int residuo = input.Length - (rowCount * colCount);
+
+                for (int i = 0; i < rowCount; i++)
+                {
+                    for (int j = 0; j < colCount; j++)
+                    {
+                        output[i, j] = input[i * colCount + j];
+                    }
+                }
+
+                for (int i=0;i<residuo; i++)
+                {
+                    output[i, rowCount] = input[(rowCount * colCount) + i];
+                }
             }
             return output;
         }
 
         private void reloadPanel(object sender, EventArgs e)
         {
-
-        }
-
-        private void pictureBox6_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox6.Cursor = Cursors.Hand;
-
-        }
-
-        private void pictureBox6_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox6.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox6.Cursor = Cursors.Default;
-        }
-        #endregion
-
-        private void FormBtnCursos_Load(object sender, EventArgs e)
-        {
-            List<Curso> cursos =(List<Curso>) data["cursos"];
-            foreach (Curso c in cursos)
-            {
-                if (c.nombre == "Álgebra")
-                {
-                    pictureBox1.Image = Image.FromFile(imagenes[c.nombre]);
-                }
-                Console.WriteLine(c.nombre);
-            }
-
+            int rows = initialRows - (getColumns() - initialCols);
+            if (rows==getColumns())
+                orderComponents(getColumns(), 3);
+            else
+                orderComponents(getColumns(), rows);
         }
     }
 }

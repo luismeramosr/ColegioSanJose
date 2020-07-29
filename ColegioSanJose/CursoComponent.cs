@@ -40,5 +40,10 @@ namespace ColegioSanJose
         {
             // Cargar formulario de evaluaciones
         }
+
+        public void relocate(Point newLocation)
+        {
+            Location = newLocation;
+        }
     }
 }
