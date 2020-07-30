@@ -216,6 +216,33 @@ namespace ColegioSanJose
 
         }
 
+        public void AbrirFormularioPerfil()
+        {
+            Form formulario;
+            formulario = panelForm.Controls.OfType<FormPerfilUser>().FirstOrDefault();//busca en la coleccion del form
+            //si el form no existe
+            if (formulario == null)
+            {
+
+                formulario = new FormPerfilUser(data);
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panelForm.Controls.Add(formulario);
+                panelForm.Tag = formulario;
+                formulario.BringToFront();
+                formulario.Show();
+                formulario.FormClosed += new FormClosedEventHandler(cerrarform);
+
+            }
+            //si el form existe
+            else
+            {
+                formulario.BringToFront();
+            }
+
+        }
+
 
         #region Botones del menu (abrir forms)
 
