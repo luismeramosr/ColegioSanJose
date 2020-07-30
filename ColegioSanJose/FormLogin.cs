@@ -28,7 +28,7 @@ namespace ColegioSanJose
         #region Login
         private bool login(string user, string password)
         {
-            Usuario newUser = db.readRow<Usuario>(user);
+            Usuario newUser = db.readRow(new Usuario(),user);
             Dictionary<string, object> data = new Dictionary<string, object>();
 
             if(newUser != null)
@@ -39,7 +39,7 @@ namespace ColegioSanJose
                     Alumno alu = db.readRow<Alumno>(user);
                     List<Curso> cursos = db.readTable<Curso>(alu.Seccion, 1);
                     data.Add("userType", "Alumno");
-                    data.Add("user", alu);
+                    data.Add("user", newUser);
                     data.Add("cursos", cursos);
                     (new FormPrincipal(data)).Show();
                     this.Close();
@@ -50,7 +50,7 @@ namespace ColegioSanJose
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
                     Docente doc = db.readRow<Docente>(user);
                     data.Add("userType", "Docente");
-                    data.Add("user", doc);
+                    data.Add("user", newUser);
                     (new FormPrincipal(data)).Show();
                     this.Close();
                     return true;

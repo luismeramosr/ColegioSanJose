@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using MySql.Data.MySqlClient;
 
+
+
 namespace Datalib
 {
     public class DBManager
@@ -126,15 +128,14 @@ namespace Datalib
             }
         }
 
-        public T readRow<T>(string objectID)
+        public T readRow<T>(T obj,String objectID)
         {
-            Type anyType = typeof(T);
             T rowData = new InstanceOf<T>().Create();
-            PropertyInfo[] props = anyType.GetProperties();
+            PropertyInfo[] props = obj.getType().GetProperties();
 
             string query = string.Format("select * from {0} "+
                                          "where {1} = '{2}';",
-                                         anyType.Name,
+                                         obj.getType().Name,
                                          props[0].Name,
                                          objectID);
 
@@ -143,12 +144,15 @@ namespace Datalib
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
-
+                
                 while (reader.Read())
                 {                            
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        props[i].SetValue(rowData, reader.GetValue(i).ToString());
+                        if (!props[i].PropertyType.Equals(typeof(int)))
+                            props[i].SetValue(rowData, reader.GetValue(i).ToString());
+                        else
+                            props[i].SetValue(rowData, reader.GetValue(i));
                     }
                 }
                 conn.Close();
@@ -161,9 +165,8 @@ namespace Datalib
             }
         }
         
-        public void updateRow<T>()
+        public void updateRow<T>(T obj)
         {
-            Type t = typeof(T);
             string query = string.Format("update {0} "+
                                          "set ", t.Name);
 
@@ -171,18 +174,22 @@ namespace Datalib
 
             foreach (PropertyInfo prop in props)
             {
-                query += prop.Name + " = '" + prop.GetValue(t) + "',";
+                if (!prop.PropertyType.Equals(typeof(int)))
+                    query += prop.Name + " = '" + prop.GetValue(obj) + "',";
+                else
+                    query += prop.Name + "=" + prop.GetValue(obj) + ",";
             }
+            
             query = query.Substring(0, (query.Length - 1));
-            query += string.Format("where {0} = '{1}';",
+            query += string.Format(" where {0} = '{1}';",
                                     props[0].Name,
-                                    props[0].GetValue(t));
-
+                                    props[0].GetValue(obj));
+            Console.WriteLine(query);
             try
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteScalar();
                 conn.Close();
             }
             catch (MySqlException err)

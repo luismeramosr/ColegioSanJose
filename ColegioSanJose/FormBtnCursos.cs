@@ -6,6 +6,8 @@ using Domain;
 using System.IO;
 using System.Resources;
 //using System.Assembly
+using Datalib;
+using ColegioSanJose;
 
 namespace ColegioSanJose
 {
