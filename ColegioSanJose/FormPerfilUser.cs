@@ -17,47 +17,49 @@ namespace ColegioSanJose
     {
         Dictionary<string, object> data;
         int lx, ly;
-        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_colegio");
+        DBManager db = new DBManager("192.168.1.100", "root", "123", "apolloma_Colegio");
+        //DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+
         public FormPerfilUser(Dictionary<string, object> data)
         {
             Usuario user = (Usuario)data["user"];
             InitializeComponent();
             PosicionInicial();
             this.data = data;
-            lbnombre.Text = user.nombre;
-            lbapellido.Text = user.apellidos;
-            lbyears.Text = user.edad.ToString();
-            lbcorreo.Text = user.correo;
+            txtNombre.Text = user.nombre;
+            txtApellido.Text = user.apellidos;
+            txtEdad.Text = user.edad.ToString();
+            txtEmail.Text = user.correo;
             editardatos();
 
         }
         private void actualizarform(Usuario olduser)
         {
             Usuario user = db.readRow(olduser,olduser.idUsuario);
-            lbnombre.Text = user.nombre;
-            lbapellido.Text = user.apellidos;
-            lbyears.Text = user.edad.ToString();
-            lbcorreo.Text = user.correo;
+            txtNombre.Text = user.nombre;
+            txtApellido.Text = user.apellidos;
+            txtEdad.Text = user.edad.ToString();
+            txtEmail.Text = user.correo;
            
 
         }
         private void actulizardatos(object sender, EventArgs e)
         {
             Usuario user = (Usuario)data["user"];
-            user.nombre = lbnombre.Text;
-            user.apellidos = lbapellido.Text;
-            user.edad = int.Parse(lbyears.Text);
-            user.correo = lbcorreo.Text;
+            user.nombre = txt_edNombre.Text;
+            user.apellidos = txt_edApellido.Text;
+            user.edad = int.Parse(txt_edEdad.Text);
+            user.correo = txt_edEmail.Text;
             db.updateRow(user);
             actualizarform(user);
         }
 
         private void editardatos()
         {
-            txtNomUser.Text = lbnombre.Text;
-            txtapellido.Text = lbapellido.Text;
-            txtedad.Text = lbyears.Text;
-            txtemail.Text = lbcorreo.Text;
+            txt_edNombre.Text = txtNombre.Text;
+            txt_edApellido.Text = txtApellido.Text;
+            txt_edEdad.Text = txtEdad.Text;
+            txt_edEmail.Text = txtEmail.Text;
         }
 
         private void PosicionInicial()
@@ -72,13 +74,13 @@ namespace ColegioSanJose
             plEditarDatos.Visible = false;
         }
 
-        private void btncamcelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             PosicionInicial();
             editardatos();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
             pldatos.Location = new Point(
             this.ClientSize.Width / 3 - pldatos.Size.Width / 2,

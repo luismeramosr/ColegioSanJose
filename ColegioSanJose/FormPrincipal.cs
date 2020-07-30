@@ -188,7 +188,6 @@ namespace ColegioSanJose
                 formulario.BringToFront();
             }
         }
-        #endregion
 
         public void AbrirFormularioPerfil()
         {

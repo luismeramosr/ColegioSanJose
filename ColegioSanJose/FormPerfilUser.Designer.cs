@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPerfilUser));
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgProfile = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lbnombre = new System.Windows.Forms.Label();
-            this.lbapellido = new System.Windows.Forms.Label();
-            this.lbyears = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.Label();
+            this.txtEdad = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.plEditarDatos = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,17 +47,17 @@
             this.btncamcelar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.txtemail = new System.Windows.Forms.TextBox();
-            this.txtedad = new System.Windows.Forms.TextBox();
+            this.txt_edEmail = new System.Windows.Forms.TextBox();
+            this.txt_edEdad = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtapellido = new System.Windows.Forms.TextBox();
-            this.txtNomUser = new System.Windows.Forms.TextBox();
+            this.txt_edApellido = new System.Windows.Forms.TextBox();
+            this.txt_edNombre = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.lbcorreo = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pldatos = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProfile)).BeginInit();
             this.plEditarDatos.SuspendLayout();
             this.pldatos.SuspendLayout();
             this.SuspendLayout();
@@ -73,15 +73,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Perfil";
             // 
-            // pictureBox1
+            // imgProfile
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(145, 143);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.imgProfile.Image = ((System.Drawing.Image)(resources.GetObject("imgProfile.Image")));
+            this.imgProfile.Location = new System.Drawing.Point(0, 22);
+            this.imgProfile.Name = "imgProfile";
+            this.imgProfile.Size = new System.Drawing.Size(145, 143);
+            this.imgProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgProfile.TabIndex = 1;
+            this.imgProfile.TabStop = false;
             // 
             // label2
             // 
@@ -116,38 +116,38 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Edad";
             // 
-            // lbnombre
+            // txtNombre
             // 
-            this.lbnombre.AutoSize = true;
-            this.lbnombre.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbnombre.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbnombre.Location = new System.Drawing.Point(166, 56);
-            this.lbnombre.Name = "lbnombre";
-            this.lbnombre.Size = new System.Drawing.Size(47, 22);
-            this.lbnombre.TabIndex = 5;
-            this.lbnombre.Text = "user";
+            this.txtNombre.AutoSize = true;
+            this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.Color.SlateGray;
+            this.txtNombre.Location = new System.Drawing.Point(166, 56);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(47, 22);
+            this.txtNombre.TabIndex = 5;
+            this.txtNombre.Text = "user";
             // 
-            // lbapellido
+            // txtApellido
             // 
-            this.lbapellido.AutoSize = true;
-            this.lbapellido.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbapellido.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbapellido.Location = new System.Drawing.Point(166, 123);
-            this.lbapellido.Name = "lbapellido";
-            this.lbapellido.Size = new System.Drawing.Size(99, 22);
-            this.lbapellido.TabIndex = 6;
-            this.lbapellido.Text = "last name";
+            this.txtApellido.AutoSize = true;
+            this.txtApellido.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.ForeColor = System.Drawing.Color.SlateGray;
+            this.txtApellido.Location = new System.Drawing.Point(166, 123);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(99, 22);
+            this.txtApellido.TabIndex = 6;
+            this.txtApellido.Text = "last name";
             // 
-            // lbyears
+            // txtEdad
             // 
-            this.lbyears.AutoSize = true;
-            this.lbyears.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbyears.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbyears.Location = new System.Drawing.Point(166, 191);
-            this.lbyears.Name = "lbyears";
-            this.lbyears.Size = new System.Drawing.Size(59, 22);
-            this.lbyears.TabIndex = 7;
-            this.lbyears.Text = "years";
+            this.txtEdad.AutoSize = true;
+            this.txtEdad.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEdad.ForeColor = System.Drawing.Color.SlateGray;
+            this.txtEdad.Location = new System.Drawing.Point(166, 191);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.Size = new System.Drawing.Size(59, 22);
+            this.txtEdad.TabIndex = 7;
+            this.txtEdad.Text = "years";
             // 
             // button1
             // 
@@ -164,7 +164,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Editar Perfil";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnEditarPerfil_Click);
             // 
             // plEditarDatos
             // 
@@ -177,12 +177,12 @@
             this.plEditarDatos.Controls.Add(this.btncamcelar);
             this.plEditarDatos.Controls.Add(this.panel4);
             this.plEditarDatos.Controls.Add(this.panel5);
-            this.plEditarDatos.Controls.Add(this.txtemail);
-            this.plEditarDatos.Controls.Add(this.txtedad);
+            this.plEditarDatos.Controls.Add(this.txt_edEmail);
+            this.plEditarDatos.Controls.Add(this.txt_edEdad);
             this.plEditarDatos.Controls.Add(this.panel3);
             this.plEditarDatos.Controls.Add(this.panel2);
-            this.plEditarDatos.Controls.Add(this.txtapellido);
-            this.plEditarDatos.Controls.Add(this.txtNomUser);
+            this.plEditarDatos.Controls.Add(this.txt_edApellido);
+            this.plEditarDatos.Controls.Add(this.txt_edNombre);
             this.plEditarDatos.Controls.Add(this.label8);
             this.plEditarDatos.Dock = System.Windows.Forms.DockStyle.Right;
             this.plEditarDatos.Location = new System.Drawing.Point(461, 0);
@@ -266,7 +266,7 @@
             this.btncamcelar.TabIndex = 12;
             this.btncamcelar.Text = "Cancelar";
             this.btncamcelar.UseVisualStyleBackColor = false;
-            this.btncamcelar.Click += new System.EventHandler(this.btncamcelar_Click);
+            this.btncamcelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // panel4
             // 
@@ -284,27 +284,27 @@
             this.panel5.Size = new System.Drawing.Size(260, 1);
             this.panel5.TabIndex = 23;
             // 
-            // txtemail
+            // txt_edEmail
             // 
-            this.txtemail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.txtemail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtemail.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtemail.ForeColor = System.Drawing.Color.DimGray;
-            this.txtemail.Location = new System.Drawing.Point(25, 334);
-            this.txtemail.Name = "txtemail";
-            this.txtemail.Size = new System.Drawing.Size(258, 20);
-            this.txtemail.TabIndex = 22;
+            this.txt_edEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.txt_edEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_edEmail.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_edEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_edEmail.Location = new System.Drawing.Point(25, 334);
+            this.txt_edEmail.Name = "txt_edEmail";
+            this.txt_edEmail.Size = new System.Drawing.Size(258, 20);
+            this.txt_edEmail.TabIndex = 22;
             // 
-            // txtedad
+            // txt_edEdad
             // 
-            this.txtedad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.txtedad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtedad.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtedad.ForeColor = System.Drawing.Color.DimGray;
-            this.txtedad.Location = new System.Drawing.Point(26, 251);
-            this.txtedad.Name = "txtedad";
-            this.txtedad.Size = new System.Drawing.Size(258, 20);
-            this.txtedad.TabIndex = 21;
+            this.txt_edEdad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.txt_edEdad.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_edEdad.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_edEdad.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_edEdad.Location = new System.Drawing.Point(26, 251);
+            this.txt_edEdad.Name = "txt_edEdad";
+            this.txt_edEdad.Size = new System.Drawing.Size(258, 20);
+            this.txt_edEdad.TabIndex = 21;
             // 
             // panel3
             // 
@@ -322,27 +322,27 @@
             this.panel2.Size = new System.Drawing.Size(260, 1);
             this.panel2.TabIndex = 19;
             // 
-            // txtapellido
+            // txt_edApellido
             // 
-            this.txtapellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.txtapellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtapellido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapellido.ForeColor = System.Drawing.Color.DimGray;
-            this.txtapellido.Location = new System.Drawing.Point(26, 172);
-            this.txtapellido.Name = "txtapellido";
-            this.txtapellido.Size = new System.Drawing.Size(258, 20);
-            this.txtapellido.TabIndex = 18;
+            this.txt_edApellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.txt_edApellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_edApellido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_edApellido.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_edApellido.Location = new System.Drawing.Point(26, 172);
+            this.txt_edApellido.Name = "txt_edApellido";
+            this.txt_edApellido.Size = new System.Drawing.Size(258, 20);
+            this.txt_edApellido.TabIndex = 18;
             // 
-            // txtNomUser
+            // txt_edNombre
             // 
-            this.txtNomUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.txtNomUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNomUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomUser.ForeColor = System.Drawing.Color.DimGray;
-            this.txtNomUser.Location = new System.Drawing.Point(25, 93);
-            this.txtNomUser.Name = "txtNomUser";
-            this.txtNomUser.Size = new System.Drawing.Size(258, 20);
-            this.txtNomUser.TabIndex = 17;
+            this.txt_edNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.txt_edNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_edNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_edNombre.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_edNombre.Location = new System.Drawing.Point(25, 93);
+            this.txt_edNombre.Name = "txt_edNombre";
+            this.txt_edNombre.Size = new System.Drawing.Size(258, 20);
+            this.txt_edNombre.TabIndex = 17;
             // 
             // label8
             // 
@@ -355,15 +355,15 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Editar mis Datos";
             // 
-            // lbcorreo
+            // txtEmail
             // 
-            this.lbcorreo.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbcorreo.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbcorreo.Location = new System.Drawing.Point(166, 261);
-            this.lbcorreo.Name = "lbcorreo";
-            this.lbcorreo.Size = new System.Drawing.Size(228, 22);
-            this.lbcorreo.TabIndex = 11;
-            this.lbcorreo.Text = "mail";
+            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.Color.SlateGray;
+            this.txtEmail.Location = new System.Drawing.Point(166, 261);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(228, 22);
+            this.txtEmail.TabIndex = 11;
+            this.txtEmail.Text = "mail";
             // 
             // label10
             // 
@@ -378,16 +378,16 @@
             // 
             // pldatos
             // 
-            this.pldatos.Controls.Add(this.pictureBox1);
-            this.pldatos.Controls.Add(this.lbcorreo);
+            this.pldatos.Controls.Add(this.imgProfile);
+            this.pldatos.Controls.Add(this.txtEmail);
             this.pldatos.Controls.Add(this.label2);
             this.pldatos.Controls.Add(this.label10);
             this.pldatos.Controls.Add(this.label3);
             this.pldatos.Controls.Add(this.label4);
             this.pldatos.Controls.Add(this.button1);
-            this.pldatos.Controls.Add(this.lbnombre);
-            this.pldatos.Controls.Add(this.lbyears);
-            this.pldatos.Controls.Add(this.lbapellido);
+            this.pldatos.Controls.Add(this.txtNombre);
+            this.pldatos.Controls.Add(this.txtEdad);
+            this.pldatos.Controls.Add(this.txtApellido);
             this.pldatos.Location = new System.Drawing.Point(12, 86);
             this.pldatos.Name = "pldatos";
             this.pldatos.Size = new System.Drawing.Size(402, 299);
@@ -404,7 +404,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormPerfilUser";
             this.Text = "FormPerfilUser";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgProfile)).EndInit();
             this.plEditarDatos.ResumeLayout(false);
             this.plEditarDatos.PerformLayout();
             this.pldatos.ResumeLayout(false);
@@ -417,23 +417,23 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgProfile;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbnombre;
-        private System.Windows.Forms.Label lbapellido;
-        private System.Windows.Forms.Label lbyears;
+        private System.Windows.Forms.Label txtNombre;
+        private System.Windows.Forms.Label txtApellido;
+        private System.Windows.Forms.Label txtEdad;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel plEditarDatos;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtapellido;
-        private System.Windows.Forms.TextBox txtNomUser;
+        private System.Windows.Forms.TextBox txt_edApellido;
+        private System.Windows.Forms.TextBox txt_edNombre;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox txtemail;
-        private System.Windows.Forms.TextBox txtedad;
-        private System.Windows.Forms.Label lbcorreo;
+        private System.Windows.Forms.TextBox txt_edEmail;
+        private System.Windows.Forms.TextBox txt_edEdad;
+        private System.Windows.Forms.Label txtEmail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btncamcelar;

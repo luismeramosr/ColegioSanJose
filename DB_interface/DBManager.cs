@@ -24,23 +24,55 @@ namespace Datalib
             "username={2};password={3};database={4}", hostIP, port, username, password, databaseName));
         }
 
-        public void insertRow<T>()
+        private void MapValueToType<T>(PropertyInfo prop, T rowData,
+                                        MySqlDataReader reader, int columnIndex)
         {
-            Type t = typeof(T);
-            PropertyInfo[] props = t.GetProperties();
+            if (prop.PropertyType.Equals(typeof(int)))
+                prop.SetValue(rowData, reader.GetInt32(columnIndex));
+            else if (prop.PropertyType.Equals(typeof(string)))
+                prop.SetValue(rowData, reader.GetValue(columnIndex).ToString());
+        }
+
+        private string MakeQueryFromType<T>(PropertyInfo prop, T obj,
+                                            string queryType)
+        {
+            string query = "";
+            switch (queryType)
+            {
+                case "update":
+                    if (prop.PropertyType.Equals(typeof(int)))
+                        query += string.Format("{0}={1},", prop.Name, prop.GetValue(obj));                    
+                    else if (prop.PropertyType.Equals(typeof(string)))
+                        query += string.Format("{0}='{1}',", prop.Name, prop.GetValue(obj));
+                    break;
+
+                case "insert":
+                    if(prop.PropertyType.Equals(typeof(int)))
+                        query += string.Format("{0},", prop.GetValue(obj));
+                    else if(prop.PropertyType.Equals(typeof(string)))
+                        query += string.Format("'{0}',", prop.GetValue(obj));
+                    break;
+            }
+            return query;
+        }
+
+        public void insertRow<T>(T obj)
+        {
+            PropertyInfo[] props = obj.GetType().GetProperties();
             string query = string.Format("insert into `{0}` values(",
-                                         t.Name);
+                                         obj.GetType().Name);
 
             foreach (PropertyInfo prop in props)
             {
-                query += string.Format("'{0}',", prop.GetValue(t));
+                MakeQueryFromType(prop, obj, "insert");
             }
 
             query = query.Substring(0, (query.Length - 1)) + ");";
 
             try
             {
-                conn.Open();
+                if (conn.State==System.Data.ConnectionState.Closed)
+                    conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 object result = cmd.ExecuteScalar();
                 conn.Close();
@@ -63,7 +95,8 @@ namespace Datalib
 
             try
             {
-                conn.Open();
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -73,7 +106,7 @@ namespace Datalib
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        props[i].SetValue(rowData, reader.GetValue(i).ToString());
+                        MapValueToType(props[i], rowData, reader, i);
                     }
                     tableData.Add(rowData);
                 }
@@ -103,7 +136,8 @@ namespace Datalib
 
             try
             {
-                conn.Open();
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -113,7 +147,7 @@ namespace Datalib
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        props[i].SetValue(rowData, reader.GetValue(i).ToString());
+                        MapValueToType(props[i], rowData, reader, i);
                     }
                     tableData.Add(rowData);
                 }
@@ -128,20 +162,21 @@ namespace Datalib
             }
         }
 
-        public T readRow<T>(T obj,String objectID)
+        public T readRow<T>(T obj,string objectID)
         {
             T rowData = new InstanceOf<T>().Create();
-            PropertyInfo[] props = obj.getType().GetProperties();
+            PropertyInfo[] props = obj.GetType().GetProperties();
 
             string query = string.Format("select * from {0} "+
                                          "where {1} = '{2}';",
-                                         obj.getType().Name,
+                                         obj.GetType().Name,
                                          props[0].Name,
                                          objectID);
 
             try
             {
-                conn.Open();
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 
@@ -149,10 +184,7 @@ namespace Datalib
                 {                            
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        if (!props[i].PropertyType.Equals(typeof(int)))
-                            props[i].SetValue(rowData, reader.GetValue(i).ToString());
-                        else
-                            props[i].SetValue(rowData, reader.GetValue(i));
+                        MapValueToType(props[i], rowData, reader, i);
                     }
                 }
                 conn.Close();
@@ -163,31 +195,28 @@ namespace Datalib
                 Console.WriteLine(err);
                 return default(T);
             }
-        }
+        }        
         
         public void updateRow<T>(T obj)
         {
             string query = string.Format("update {0} "+
-                                         "set ", t.Name);
+                                         "set ", obj.GetType().Name);
 
-            PropertyInfo[] props = t.GetProperties();
+            PropertyInfo[] props = obj.GetType().GetProperties();
 
             foreach (PropertyInfo prop in props)
             {
-                if (!prop.PropertyType.Equals(typeof(int)))
-                    query += prop.Name + " = '" + prop.GetValue(obj) + "',";
-                else
-                    query += prop.Name + "=" + prop.GetValue(obj) + ",";
+                query += MakeQueryFromType(prop, obj, "update");
             }
             
             query = query.Substring(0, (query.Length - 1));
             query += string.Format(" where {0} = '{1}';",
                                     props[0].Name,
                                     props[0].GetValue(obj));
-            Console.WriteLine(query);
             try
             {
-                conn.Open();
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteScalar();
                 conn.Close();
@@ -198,19 +227,19 @@ namespace Datalib
             }
         }
 
-        public void deleteRow<T>()
+        public void deleteRow<T>(T obj)
         {
-            Type t = typeof(T);
-            PropertyInfo[] props = t.GetProperties();
+            PropertyInfo[] props = obj.GetType().GetProperties();
             string query = string.Format("delete from {0} "+
                                         "where {1} = '{2}';",
-                                        t.Name,
+                                        obj.GetType().Name,
                                         props[0].Name,
-                                        props[0].GetValue(t));
+                                        props[0].GetValue(obj));
 
             try
             {
-                conn.Open();
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
                 conn.Close();

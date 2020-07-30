@@ -36,7 +36,7 @@ namespace ColegioSanJose
                 if (newUser.isAlumno() && newUser.password == password)
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
-                    Alumno alu = db.readRow<Alumno>(user);
+                    Alumno alu = db.readRow(new Alumno(), user);
                     List<Curso> cursos = db.readTable<Curso>(alu.Seccion, 1);
                     data.Add("userType", "Alumno");
                     data.Add("user", newUser);
@@ -48,7 +48,7 @@ namespace ColegioSanJose
                 else if (newUser.isDocente() && newUser.password == password)
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
-                    Docente doc = db.readRow<Docente>(user);
+                    Docente doc = db.readRow(new Docente(), user);
                     data.Add("userType", "Docente");
                     data.Add("user", newUser);
                     (new FormPrincipal(data)).Show();
