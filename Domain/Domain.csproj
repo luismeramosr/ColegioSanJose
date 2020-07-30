@@ -50,9 +50,9 @@
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DB_interface\DB_interface.csproj">
+    <ProjectReference Include="..\DB_interface\Datalib.csproj">
       <Project>{3bb5ee69-44fe-4292-947a-edc021cfa531}</Project>
-      <Name>DB_interface</Name>
+      <Name>Datalib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

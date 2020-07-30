@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DB_interface;
+using Datalib;
 
 using Domain;
 using System.Runtime.InteropServices;
@@ -27,12 +27,12 @@ namespace ColegioSanJose
                 msgError("El código o contraseña ingresado es incorrecto o no existe");         
         }
 
-        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_colegio");
 
         #region Login
         private bool login(string user, string password)
         {
-            Usuario newUser = db.readRow(new Usuario(), user);
+            Usuario newUser = db.readRow(new Usuario(),user);
             Dictionary<string, object> data = new Dictionary<string, object>();
 
             if(newUser != null)
@@ -43,7 +43,7 @@ namespace ColegioSanJose
                     Alumno alu = db.readRow(new Alumno(), user);
                     List<Curso> cur = db.readTable(new Curso(), alu.Seccion, 1);
                     data.Add("userType", "Alumno");
-                    data.Add("user", alu);
+                    data.Add("user", newUser);
                     data.Add("cursos", cur);
                     (new FormPrincipal(data)).Show();
                     this.Close();
@@ -54,7 +54,7 @@ namespace ColegioSanJose
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
                     Docente doc = db.readRow(new Docente(), user);
                     data.Add("userType", "Docente");
-                    data.Add("user", doc);
+                    data.Add("user", newUser);
                     (new FormPrincipal(data)).Show();
                     this.Close();
                     return true;

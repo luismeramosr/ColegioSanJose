@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain;
-using DB_interface;
+using Datalib;
 using ColegioSanJose;
 
 namespace ColegioSanJose

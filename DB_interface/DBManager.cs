@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 
 
 
-namespace DB_interface
+namespace Datalib
 {
     public class DBManager
     {
@@ -125,7 +125,7 @@ namespace DB_interface
             }
         }
 
-        public T readRow<T>(T obj, string objectID)
+        public T readRow<T>(T obj,String objid)
         {
             T rowData = (T)Activator.CreateInstance(obj.GetType());
             PropertyInfo[] props = obj.GetType().GetProperties();
@@ -134,19 +134,22 @@ namespace DB_interface
                                          "where {1} = '{2}';",
                                          obj.GetType().Name,
                                          props[0].Name,
-                                         objectID);
+                                         objid);
 
             try
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
-
+                
                 while (reader.Read())
                 {                            
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        props[i].SetValue(rowData, reader.GetValue(i).ToString());
+                        if (!props[i].PropertyType.Equals(typeof(int)))
+                            props[i].SetValue(rowData, reader.GetValue(i).ToString());
+                        else
+                            props[i].SetValue(rowData, reader.GetValue(i));
                     }
                 }
                 conn.Close();
@@ -168,18 +171,22 @@ namespace DB_interface
 
             foreach (PropertyInfo prop in props)
             {
-                query += prop.Name + " = '" + prop.GetValue(obj.GetType()) + "',";
+                if (!prop.PropertyType.Equals(typeof(int)))
+                    query += prop.Name + " = '" + prop.GetValue(obj) + "',";
+                else
+                    query += prop.Name + "=" + prop.GetValue(obj) + ",";
             }
+            
             query = query.Substring(0, (query.Length - 1));
-            query += string.Format("where {0} = '{1}';",
+            query += string.Format(" where {0} = '{1}';",
                                     props[0].Name,
-                                    props[0].GetValue(obj.GetType()));
-
+                                    props[0].GetValue(obj));
+            Console.WriteLine(query);
             try
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteScalar();
                 conn.Close();
             }
             catch (MySqlException err)

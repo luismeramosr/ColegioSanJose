@@ -25,7 +25,7 @@ namespace ColegioSanJose
         
 
         #region Forma del panelcontenedor
-        //RESIZE METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO EN TIEMPO DE EJECUCION ----------------------------------------------------------
+        //RESIZE METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO EN TIEMPO DE EJECUCION 
         private int tolerance = 12;
         private const int WM_NCHITTEST = 132;
         private const int HTBOTTOMRIGHT = 17;
@@ -175,6 +175,33 @@ namespace ColegioSanJose
         }
         #endregion
 
+        public void AbrirFormularioPerfil()
+        {
+            Form formulario;
+            formulario = panelForm.Controls.OfType<FormPerfilUser>().FirstOrDefault();//busca en la coleccion del form
+            //si el form no existe
+            if (formulario == null)
+            {
+
+                formulario = new FormPerfilUser(data);
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panelForm.Controls.Add(formulario);
+                panelForm.Tag = formulario;
+                formulario.BringToFront();
+                formulario.Show();
+                formulario.FormClosed += new FormClosedEventHandler(cerrarform);
+
+            }
+            //si el form existe
+            else
+            {
+                formulario.BringToFront();
+            }
+
+        }
+
 
         #region Botones del menu (abrir forms)
 
@@ -186,7 +213,8 @@ namespace ColegioSanJose
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            Abrirformulario<FormPerfilUser>();
+            AbrirFormularioPerfil();
+            
             btnPerfil.BackColor = Color.FromArgb(12, 61, 92);
 
         }

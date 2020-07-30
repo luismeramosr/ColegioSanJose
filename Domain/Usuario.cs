@@ -8,18 +8,35 @@ namespace Domain
 {
     public class Usuario
     {
+
         public string idUsuario { get; set; }
         public string password { get; set; }
         public string tipo { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
+        public int edad { get; set; }
+        public string correo { get; set; }
+        public string image { get; set; }
 
-        public Usuario() { }
+        public Usuario()
+        {
+            edad = 0;
+        }
 
-        public Usuario(string idUsuario, string password, string tipo)
+        public Usuario(string idUsuario, string password, string tipo, string nombre, string apellidos, int edad, string correo, string image)
         {
             this.idUsuario = idUsuario;
             this.password = password;
             this.tipo = tipo;
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.edad = edad;
+            this.correo = correo;
+            this.image = image;
         }
+
+       
+
 
         public bool isAlumno()
         {
