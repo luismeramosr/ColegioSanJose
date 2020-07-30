@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace ColegioSanJose
@@ -18,6 +14,7 @@ namespace ColegioSanJose
         {
             InitializeComponent();
             Designsubmenu();
+            this.data = data;
             btnPerfil.Text = data["userType"].ToString();
             this.data = data;
         }
@@ -75,6 +72,7 @@ namespace ColegioSanJose
         int lx, ly;
         int sw, sh;
 
+        bool isMaximized = false;
         private void btnmaximizar_Click(object sender, EventArgs e)
         {
             lx = this.Location.X;
@@ -82,24 +80,28 @@ namespace ColegioSanJose
             sw = this.Size.Width;
             sh = this.Size.Height;
             
-          
-
-            
-
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+            panelForm.Size = Size;
+            panelForm.Location = Location;
             btnmaximizar.Visible = false;
             btnrestaurar.Visible = true;
+            actualizarForm();
 
         }
+
         private void btnrestaurar_Click(object sender, EventArgs e)
         {
             btnmaximizar.Visible = true;
             btnrestaurar.Visible = false;
+            isMaximized = false;
             this.Size = new Size(sw, sh);
             this.Location = new Point(lx, ly);
+            panelForm.Size = new Size(sw,sh);
+            actualizarForm();
         }
+
         private void btnminimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -118,16 +120,33 @@ namespace ColegioSanJose
         }
         #endregion
 
+        private Form activeForm()
+        {
+            return isMaximized ? (Form)panelForm.GetChildAtPoint(new Point(400, 150)): 
+                                    new Form();
+        }
+
+        private void actualizarForm()
+        {
+            Form form = activeForm();
+            if (form != null)
+            {
+                form.Size = panelForm.Size;
+                form.BringToFront();
+            }
+        }
+
         #region Metodo para abrir Formularios dentro el panel
+        Form formulario = new Form();
         private void Abrirformulario<MiForm>() where MiForm : Form, new()
         {
-            Form formulario;
             formulario = panelForm.Controls.OfType<MiForm>().FirstOrDefault();//busca en la coleccion del form
             //si el form no existe
             if (formulario == null)
             {
                 
                 formulario = new MiForm();
+                formulario.Size = panelForm.Size;
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
@@ -136,26 +155,50 @@ namespace ColegioSanJose
                 formulario.BringToFront();
                 formulario.Show();
                 formulario.FormClosed += new FormClosedEventHandler(cerrarform);
-
             }
             //si el form existe
             else
             {
+                formulario.Size = panelForm.Size;
                 formulario.BringToFront();
             }
         }
         #endregion
 
-        #region AbrirFormulario btnCursos     
-        public void AbrirFormularioCurso()
+        private void abrirFormBtnCursos()
+        {
+            formulario = panelForm.Controls.OfType<FormBtnCursos>().FirstOrDefault();//busca en la coleccion del form
+            if (formulario == null)
+            {
+                formulario = new FormBtnCursos(data);
+                formulario.Size = panelForm.Size;
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panelForm.Controls.Add(formulario);
+                panelForm.Tag = formulario;
+                formulario.BringToFront();
+                formulario.Show();
+                formulario.FormClosed += new FormClosedEventHandler(cerrarform);
+            }
+            //si el form existe
+            else
+            {
+                formulario.Size = panelForm.Size;
+                formulario.BringToFront();
+            }
+        }
+        #endregion
+
+        public void AbrirFormularioPerfil()
         {
             Form formulario;
-            formulario = panelForm.Controls.OfType<FormBtnCursos>().FirstOrDefault();//busca en la coleccion del form
+            formulario = panelForm.Controls.OfType<FormPerfilUser>().FirstOrDefault();//busca en la coleccion del form
             //si el form no existe
             if (formulario == null)
             {
 
-                formulario = new FormBtnCursos(data);
+                formulario = new FormPerfilUser(data);
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
@@ -173,7 +216,6 @@ namespace ColegioSanJose
             }
 
         }
-        #endregion
 
         public void AbrirFormularioPerfil()
         {
@@ -207,7 +249,7 @@ namespace ColegioSanJose
 
         private void btnCursos_Click(object sender, EventArgs e)
         {
-            AbrirFormularioCurso();
+            abrirFormBtnCursos();
             btnCursos.BackColor = Color.FromArgb(12, 61, 92);
         }
 
@@ -306,8 +348,6 @@ namespace ColegioSanJose
             this.Close();
             (new FormLogin()).Show();
         }
-
-        
 
         private void btnconfuser_Click(object sender, EventArgs e)
         {

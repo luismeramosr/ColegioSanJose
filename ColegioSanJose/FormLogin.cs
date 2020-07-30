@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Datalib;
 
@@ -27,7 +22,8 @@ namespace ColegioSanJose
                 msgError("El código o contraseña ingresado es incorrecto o no existe");         
         }
 
-        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_colegio");
+        DBManager db = new DBManager("192.168.1.100","root", "123", "apolloma_Colegio");
+        //DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
 
         #region Login
         private bool login(string user, string password)
@@ -40,11 +36,11 @@ namespace ColegioSanJose
                 if (newUser.isAlumno() && newUser.password == password)
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
-                    Alumno alu = db.readRow(new Alumno(), user);
-                    List<Curso> cur = db.readTable(new Curso(), alu.Seccion, 1);
+                    Alumno alu = db.readRow<Alumno>(user);
+                    List<Curso> cursos = db.readTable<Curso>(alu.Seccion, 1);
                     data.Add("userType", "Alumno");
                     data.Add("user", newUser);
-                    data.Add("cursos", cur);
+                    data.Add("cursos", cursos);
                     (new FormPrincipal(data)).Show();
                     this.Close();
                     return true;
@@ -52,7 +48,7 @@ namespace ColegioSanJose
                 else if (newUser.isDocente() && newUser.password == password)
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
-                    Docente doc = db.readRow(new Docente(), user);
+                    Docente doc = db.readRow<Docente>(user);
                     data.Add("userType", "Docente");
                     data.Add("user", newUser);
                     (new FormPrincipal(data)).Show();

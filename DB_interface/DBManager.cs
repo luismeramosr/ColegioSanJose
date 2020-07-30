@@ -24,15 +24,16 @@ namespace Datalib
             "username={2};password={3};database={4}", hostIP, port, username, password, databaseName));
         }
 
-        public void insertRow<T>(T obj)
+        public void insertRow<T>()
         {
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            Type t = typeof(T);
+            PropertyInfo[] props = t.GetProperties();
             string query = string.Format("insert into `{0}` values(",
-                                         obj.GetType().Name);
+                                         t.Name);
 
             foreach (PropertyInfo prop in props)
             {
-                query += string.Format("'{0}',", prop.GetValue(obj.GetType()));
+                query += string.Format("'{0}',", prop.GetValue(t));
             }
 
             query = query.Substring(0, (query.Length - 1)) + ");";
@@ -50,14 +51,15 @@ namespace Datalib
             }
         }
 
-        public List<T> readTable<T>(T obj)
+        public List<T> readTable<T>()
         {
+            Type t = typeof(T);
             List<T> tableData = new List<T>();
             T rowData;
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            PropertyInfo[] props = t.GetProperties();
 
             string query = string.Format("select * from {0};",
-                                         obj.GetType().Name);
+                                         t.Name);
 
             try
             {
@@ -67,7 +69,7 @@ namespace Datalib
 
                 while (reader.Read())
                 {
-                    rowData = (T)Activator.CreateInstance(obj.GetType());                    
+                    rowData = new InstanceOf<T>().Create();                 
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
@@ -86,15 +88,16 @@ namespace Datalib
             }
         }
 
-        public List<T> readTable<T>(T obj, string objectID, int column)
+        public List<T> readTable<T>(string objectID, int column)
         {
+            Type t = typeof(T);
             List<T> tableData = new List<T>();
             T rowData;
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            PropertyInfo[] props = t.GetProperties();
 
             string query = string.Format("select * from {0} "+
                                          "where {1} = '{2}';",
-                                         obj.GetType().Name,
+                                         t.Name,
                                          props[column].Name,
                                          objectID);
 
@@ -106,7 +109,7 @@ namespace Datalib
 
                 while (reader.Read())
                 {
-                    rowData = (T)Activator.CreateInstance(obj.GetType());
+                    rowData = new InstanceOf<T>().Create();
 
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
@@ -125,16 +128,16 @@ namespace Datalib
             }
         }
 
-        public T readRow<T>(T obj,String objid)
+        public T readRow<T>(T obj,String objectID)
         {
-            T rowData = (T)Activator.CreateInstance(obj.GetType());
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            T rowData = new InstanceOf<T>().Create();
+            PropertyInfo[] props = obj.getType().GetProperties();
 
             string query = string.Format("select * from {0} "+
                                          "where {1} = '{2}';",
-                                         obj.GetType().Name,
+                                         obj.getType().Name,
                                          props[0].Name,
-                                         objid);
+                                         objectID);
 
             try
             {
@@ -165,9 +168,9 @@ namespace Datalib
         public void updateRow<T>(T obj)
         {
             string query = string.Format("update {0} "+
-                                         "set ", obj.GetType().Name);
+                                         "set ", t.Name);
 
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            PropertyInfo[] props = t.GetProperties();
 
             foreach (PropertyInfo prop in props)
             {
@@ -195,14 +198,15 @@ namespace Datalib
             }
         }
 
-        public void deleteRow<T>(T obj)
+        public void deleteRow<T>()
         {
-            PropertyInfo[] props = obj.GetType().GetProperties();
+            Type t = typeof(T);
+            PropertyInfo[] props = t.GetProperties();
             string query = string.Format("delete from {0} "+
                                         "where {1} = '{2}';",
-                                        obj.GetType().Name,
+                                        t.Name,
                                         props[0].Name,
-                                        props[0].GetValue(obj.GetType()));
+                                        props[0].GetValue(t));
 
             try
             {

@@ -17,17 +17,12 @@ namespace ColegioSanJose
         {   
             DBManager db = new DBManager("192.168.1.100", "root", "123", "apolloma_Colegio");
 
-            List<Seccion> secciones = db.readTable(new Seccion());
+            List<Alumno> alumnos = db.readTable<Alumno>();
 
-            foreach (Seccion sec in secciones)
+            foreach (Alumno alu in alumnos)
             {
-                Console.WriteLine(sec.idSeccion);
+                Console.WriteLine(alu.idAlumno);
             }
-
-        }
-
-        private void FormTest_Load(object sender, EventArgs e)
-        {
 
         }
     }
