@@ -17,8 +17,8 @@ namespace ColegioSanJose
     {
         Dictionary<string, object> data;
         int lx, ly;
-        DBManager db = new DBManager("192.168.1.100", "root", "123", "apolloma_Colegio");
-        //DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+        //DBManager db = new DBManager("192.168.1.100", "root", "123", "apolloma_Colegio");
+        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
 
         public FormPerfilUser(Dictionary<string, object> data)
         {
