@@ -22,8 +22,8 @@ namespace ColegioSanJose
                 msgError("El código o contraseña ingresado es incorrecto o no existe");         
         }
 
-        DBManager db = new DBManager("192.168.1.100","root", "123", "apolloma_Colegio");
-        //DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+        //DBManager db = new DBManager("192.168.1.100","root", "123", "apolloma_Colegio");
+        DBManager db = new DBManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
 
         #region Login
         private bool login(string user, string password)

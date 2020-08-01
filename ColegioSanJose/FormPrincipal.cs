@@ -215,8 +215,6 @@ namespace ColegioSanJose
             }
 
         }
-
-
         #region Botones del menu (abrir forms)
 
         private void btnCursos_Click(object sender, EventArgs e)
@@ -323,8 +321,7 @@ namespace ColegioSanJose
 
         private void btnHorario_Click(object sender, EventArgs e)
         {
-            Abrirformulario<FormTest>();
-
+            Abrirformulario<FormCrearEvaluacion>();
         }
 
         private void btnconfuser_Click(object sender, EventArgs e)
