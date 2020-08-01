@@ -304,6 +304,7 @@
             this.btnHorario.TabIndex = 2;
             this.btnHorario.Text = "Horario";
             this.btnHorario.UseVisualStyleBackColor = true;
+            this.btnHorario.Click += new System.EventHandler(this.btnHorario_Click);
             // 
             // btnCursos
             // 

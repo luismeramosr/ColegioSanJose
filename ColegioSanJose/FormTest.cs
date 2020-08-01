@@ -8,22 +8,23 @@ namespace ColegioSanJose
 {
     public partial class FormTest : Form
     {
+        AlternativaArrayComponent ac;
+
         public FormTest()
         {
             InitializeComponent();
+            ac = new AlternativaArrayComponent();
+            Controls.Add(ac);
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {   
-            DBManager db = new DBManager("192.168.1.100", "root", "123", "apolloma_Colegio");
+        private void btnPush_Click(object sender, EventArgs e)
+        {
+            ac.push();
+        }
 
-            List<Alumno> alumnos = db.readTable<Alumno>();
-
-            foreach (Alumno alu in alumnos)
-            {
-                Console.WriteLine(alu.idAlumno);
-            }
-
+        private void btnPop_Click(object sender, EventArgs e)
+        {
+            ac.pop();
         }
     }
 }

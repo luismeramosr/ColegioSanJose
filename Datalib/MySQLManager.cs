@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Reflection;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 
 
 namespace Datalib
 {
-    public class DBManager
+    public class MySQLManager
     {
         private MySqlConnection conn;
 
-        public DBManager(string hostIP,string port ,string username, string password, string databaseName)
+        public MySQLManager(string hostIP,string port ,string username, string password, string databaseName)
         {
             conn = new MySqlConnection(string.Format("datasource={0};port={1};" + 
             "username={2};password={3};database={4}",hostIP,port,username,password,databaseName));
         }
 
-        public DBManager(string hostIP, string username, string password, string databaseName)
+        public MySQLManager(string hostIP, string username, string password, string databaseName)
         {
             string port = "3306";
             conn = new MySqlConnection(string.Format("datasource={0};port={1};" +

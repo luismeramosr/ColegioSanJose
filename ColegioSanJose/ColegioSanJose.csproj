@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlternativaComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlternativaComponent.Designer.cs">
+      <DependentUpon>AlternativaComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlternativaArrayComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlternativaArrayComponent.Designer.cs">
+      <DependentUpon>AlternativaArrayComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="CursoComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +103,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlternativaComponent.resx">
+      <DependentUpon>AlternativaComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlternativaArrayComponent.resx">
+      <DependentUpon>AlternativaArrayComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CursoComponent.resx">
       <DependentUpon>CursoComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,7 +152,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DB_interface\Datalib.csproj">
+    <ProjectReference Include="..\Datalib\Datalib.csproj">
       <Project>{3bb5ee69-44fe-4292-947a-edc021cfa531}</Project>
       <Name>Datalib</Name>
     </ProjectReference>
