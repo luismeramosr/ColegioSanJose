@@ -12,9 +12,15 @@ namespace ColegioSanJose
 {
     public partial class PreguntaComponent : UserControl
     {
+        AlternativaArrayComponent ac;
+
         public PreguntaComponent()
         {
             InitializeComponent();
+            Visible = false;
+            ac = new AlternativaArrayComponent();
+            Controls.Add(ac);
+            ac.Dock = DockStyle.Bottom;
         }
 
         //A00023249
@@ -25,7 +31,7 @@ namespace ColegioSanJose
             {
                 cb_fonts.Items.Add(font.Name.ToString());
             }
-        }
+        }        
 
         #region btncolor, btnfonts, btnsize
         private void btncolor_Click(object sender, EventArgs e)

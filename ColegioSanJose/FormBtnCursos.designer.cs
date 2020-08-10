@@ -61,7 +61,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormBtnCursos";
             this.Text = "Form1";
-            this.SizeChanged += new System.EventHandler(this.reloadPanel);
             this.ResumeLayout(false);
 
         }

@@ -140,6 +140,9 @@ namespace ColegioSanJose
         Form formulario = new Form();
         private void Abrirformulario<MiForm>() where MiForm : Form, new()
         {
+            imgLogo.Visible = false;
+            lbHora.Visible = false;
+            lbfecha.Visible = false;
             formulario = panelForm.Controls.OfType<MiForm>().FirstOrDefault();//busca en la coleccion del form
             //si el form no existe
             if (formulario == null)
@@ -167,6 +170,9 @@ namespace ColegioSanJose
 
         private void abrirFormBtnCursos()
         {
+            imgLogo.Visible = false;
+            lbHora.Visible = false;
+            lbfecha.Visible = false;
             formulario = panelForm.Controls.OfType<FormBtnCursos>().FirstOrDefault();//busca en la coleccion del form
             if (formulario == null)
             {
@@ -191,6 +197,9 @@ namespace ColegioSanJose
 
         public void AbrirFormularioPerfil()
         {
+            imgLogo.Visible = false;
+            lbHora.Visible = false;
+            lbfecha.Visible = false;
             Form formulario;
             formulario = panelForm.Controls.OfType<FormPerfilUser>().FirstOrDefault();//busca en la coleccion del form
             //si el form no existe
@@ -199,6 +208,7 @@ namespace ColegioSanJose
 
                 formulario = new FormPerfilUser(data);
                 formulario.TopLevel = false;
+                formulario.Size = panelForm.Size;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
                 panelForm.Controls.Add(formulario);
@@ -340,5 +350,16 @@ namespace ColegioSanJose
         }
         #endregion
 
+        private void reloadPanel(object sender, EventArgs e)
+        {
+            if (formulario.GetType().Equals(typeof(FormBtnCursos)))
+            {
+                FormBtnCursos form = (FormBtnCursos)formulario;
+                Console.WriteLine(form.getRows() + " " + form.getColumns());
+                form.orderComponents(form.getRows(), form.getColumns());
+            }
+            
+
+        }
     }
 }

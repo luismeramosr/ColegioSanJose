@@ -34,68 +34,105 @@ namespace ColegioSanJose
             }            
 
             Controls.AddRange(cursoComponents.ToArray());
-            orderComponents(initialCols, initialRows);
+            orderComponents(initialRows, initialCols);
         }
 
-        private void orderComponents(int rows, int columns)
+        public void orderComponents(int rows, int columns)
         {
             CursoComponent[,] cursos = Make2DArray(cursoComponents.ToArray(), 
                                                     rows, columns);
-            for (int i = 0; i < rows; i++)
+
+            if (rows * columns == cursos.Length)
             {
-                for (int j = 0; j < columns; j++)
+                for (int i = 0; i < rows; i++)
                 {
-                    cursos[i, j].relocate(new Point(50 + ((cursos[i, j].Width + 50) * j),
-                                        27 + ((cursos[i, j].Height + 27) * i)));
+                    for (int j = 0; j < columns; j++)
+                    {
+                        cursos[i, j].relocate(new Point(50 + ((cursos[i, j].Width + 50) * j),
+                                            27 + ((cursos[i, j].Height + 27) * i)));
+                    }
+                }
+            }else if (rows * columns < cursos.Length)
+            {
+                int lastRow = 0;
+                for (int i = 0; i < rows; i++)
+                {
+                    lastRow++;
+                    for (int j = 0; j < columns; j++)
+                    {
+                        cursos[i, j].relocate(new Point(50 + ((cursos[i, j].Width + 50) * j),
+                                            27 + ((cursos[i, j].Height + 27) * i)));
+                    }
+                }
+
+                int lastIndex = rows * columns;
+                int delta = cursos.Length - lastIndex;
+                Console.WriteLine(lastIndex);
+                Console.WriteLine(delta);
+                for (int j = 0; j < delta-1; j++)
+                {
+                    cursos[lastRow, j].relocate(new Point(50 + ((cursos[lastRow, j].Width + 50) * j),
+                                            27 + ((cursos[lastRow, j].Height + 27) * lastRow)));
+                    //Console.WriteLine(string.Format("Curso[{0},{1}] = {2}", lastRow, j, output[lastRow, j]));
                 }
             }
         }
 
-        private int getColumns()
+        public int getColumns()
         {
             return Width / 240;
         }
 
+        public int getRows()
+        {
+            return cursoComponents.Count / getColumns();
+        }
+
         private T[,] Make2DArray<T>(T[] input, int rowCount, int colCount)
         {
-            T[,] output = new T[rowCount, colCount];            
-
-            if (rowCount * colCount <= input.Length)
-            {               
-                for (int i = 0; i < rowCount; i++)
-                {
-                    for (int j = 0; j < colCount; j++)
-                    {
-                        output[i, j] = input[i * colCount + j];
-                    }
-                }
-            }else if (input.Length / (rowCount*colCount) != 1)
+            T[,] output; 
+            if (rowCount * colCount == input.Length)
             {
-                int residuo = input.Length - (rowCount * colCount);
-
+                output = new T[rowCount, colCount];
+                Console.WriteLine("Delta ==0");
                 for (int i = 0; i < rowCount; i++)
                 {
                     for (int j = 0; j < colCount; j++)
                     {
                         output[i, j] = input[i * colCount + j];
+                        Console.WriteLine(string.Format("Curso[{0},{1}] = {2}", i, j, output[i, j]));
+                    }
+                }
+                return output;
+            }
+            else if((rowCount * colCount) < input.Length)
+            {
+                output = new T[rowCount+1, colCount];
+                Console.WriteLine("Delta !=0");
+                int lastRow=0;
+
+                for (int i = 0; i < rowCount; i++)
+                {
+                    lastRow++;
+                    for (int j = 0; j < colCount; j++)
+                    {
+                        output[i, j] = input[i * colCount + j];
+                        Console.WriteLine(string.Format("Curso[{0},{1}] = {2}", i, j, output[i, j]));
                     }
                 }
 
-                for (int i=0;i<residuo; i++)
+                int lastIndex = rowCount * colCount;
+                int delta = input.Length - lastIndex;
+                Console.WriteLine(lastIndex);
+                Console.WriteLine(delta);
+                for (int j = 0; j < delta; j++)
                 {
-                    output[i, rowCount] = input[(rowCount * colCount) + i];
+                    output[lastRow, j] = input[lastIndex + j];
+                    Console.WriteLine(string.Format("Curso[{0},{1}] = {2}", lastRow, j, output[lastRow, j]));
                 }
-            }
-            return output;
-        }
-
-        private void reloadPanel(object sender, EventArgs e)
-        {
-            int rows = initialRows - (getColumns() - initialCols);
-            if (rows==getColumns())
-                orderComponents(getColumns(), 3);
-            else
-                orderComponents(getColumns(), rows);
-        }
-    }
+                return output;
+            }   
+            else return null;         
+        }                
+    }    
 }

@@ -34,7 +34,7 @@
             this.panelForm = new System.Windows.Forms.Panel();
             this.lbfecha = new System.Windows.Forms.Label();
             this.lbHora = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelDespegable = new System.Windows.Forms.Panel();
             this.btnayuda = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             this.tmHoraFecha = new System.Windows.Forms.Timer(this.components);
             this.panelContenedor.SuspendLayout();
             this.panelForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelDespegable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -85,10 +85,11 @@
             // 
             // panelForm
             // 
+            this.panelForm.AutoSize = true;
             this.panelForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.panelForm.Controls.Add(this.lbfecha);
             this.panelForm.Controls.Add(this.lbHora);
-            this.panelForm.Controls.Add(this.pictureBox1);
+            this.panelForm.Controls.Add(this.imgLogo);
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForm.Location = new System.Drawing.Point(220, 30);
             this.panelForm.Name = "panelForm";
@@ -119,16 +120,16 @@
             this.lbHora.TabIndex = 1;
             this.lbHora.Text = "label1";
             // 
-            // pictureBox1
+            // imgLogo
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(210, -5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(346, 293);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.imgLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
+            this.imgLogo.Location = new System.Drawing.Point(210, -5);
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.Size = new System.Drawing.Size(346, 293);
+            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgLogo.TabIndex = 0;
+            this.imgLogo.TabStop = false;
             // 
             // panelMenu
             // 
@@ -435,10 +436,12 @@
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.ResizeEnd += new System.EventHandler(this.reloadPanel);
             this.panelContenedor.ResumeLayout(false);
+            this.panelContenedor.PerformLayout();
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panelDespegable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -464,7 +467,7 @@
         private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.Button btnPerfil;
         private System.Windows.Forms.Panel panelForm;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Timer tmOcultarMenu;
         private System.Windows.Forms.Timer tmMostrarMenu;

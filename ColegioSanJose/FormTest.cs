@@ -9,6 +9,7 @@ namespace ColegioSanJose
     public partial class FormTest : Form
     {
         AlternativaArrayComponent ac;
+        
 
         public FormTest()
         {
