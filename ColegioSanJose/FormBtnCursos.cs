@@ -15,7 +15,7 @@ namespace ColegioSanJose
     public partial class FormBtnCursos : Form
     {
         List<Curso> cursos;
-        List<CursoComponent> cursoComponents;
+        public List<CursoComponent> cursoComponents;
         int initialRows = 5;
         int initialCols = 3;
 
@@ -28,7 +28,7 @@ namespace ColegioSanJose
             int i = 1;
             foreach (Curso cur in cursos)
             {
-                Image img = Image.FromFile(string.Format(@"..\..\Resources\{0}.png",i));  
+                Image img = Image.FromFile(string.Format(@"..\..\Resources\{0}.png",i));
                 cursoComponents.Add(new CursoComponent(cur.nombre, img));
                 i++;
             }            
@@ -67,13 +67,16 @@ namespace ColegioSanJose
 
                 int lastIndex = rows * columns;
                 int delta = cursos.Length - lastIndex;
+                Console.WriteLine(cursos.Length);
                 Console.WriteLine(lastIndex);
                 Console.WriteLine(delta);
                 for (int j = 0; j < delta-1; j++)
                 {
-                    cursos[lastRow, j].relocate(new Point(50 + ((cursos[lastRow, j].Width + 50) * j),
+                    if (cursos[lastRow,j]!=null)
+                    {
+                        cursos[lastRow, j].relocate(new Point(50 + ((cursos[lastRow, j].Width + 50) * j),
                                             27 + ((cursos[lastRow, j].Height + 27) * lastRow)));
-                    //Console.WriteLine(string.Format("Curso[{0},{1}] = {2}", lastRow, j, output[lastRow, j]));
+                    }
                 }
             }
         }

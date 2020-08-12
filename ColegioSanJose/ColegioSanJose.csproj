@@ -83,11 +83,11 @@
     <Compile Include="FormPerfilUser.Designer.cs">
       <DependentUpon>FormPerfilUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTest.cs">
+    <Compile Include="FormEvAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTest.Designer.cs">
-      <DependentUpon>FormTest.cs</DependentUpon>
+    <Compile Include="FormEvAlumno.Designer.cs">
+      <DependentUpon>FormEvAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBtnCursos.cs">
       <SubType>Form</SubType>
@@ -106,6 +106,12 @@
     </Compile>
     <Compile Include="FormPrincipal.designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEvDocente.Designer.cs">
+      <DependentUpon>FormEvDocente.cs</DependentUpon>
     </Compile>
     <Compile Include="PreguntaComponent.cs">
       <SubType>UserControl</SubType>
@@ -130,8 +136,8 @@
     <EmbeddedResource Include="FormPerfilUser.resx">
       <DependentUpon>FormPerfilUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTest.resx">
-      <DependentUpon>FormTest.cs</DependentUpon>
+    <EmbeddedResource Include="FormEvAlumno.resx">
+      <DependentUpon>FormEvAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBtnCursos.resx">
       <DependentUpon>FormBtnCursos.cs</DependentUpon>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEvDocente.resx">
+      <DependentUpon>FormEvDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreguntaComponent.resx">
       <DependentUpon>PreguntaComponent.cs</DependentUpon>

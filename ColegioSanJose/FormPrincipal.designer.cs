@@ -36,20 +36,19 @@
             this.lbHora = new System.Windows.Forms.Label();
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelDespegable = new System.Windows.Forms.Panel();
-            this.btnayuda = new System.Windows.Forms.Button();
-            this.btnconfuser = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnconf = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.panelDespegable = new System.Windows.Forms.Panel();
+            this.btnVerEvaluaciones = new System.Windows.Forms.Button();
+            this.btnconfuser = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnHorario = new System.Windows.Forms.Button();
             this.btnCursos = new System.Windows.Forms.Button();
             this.btnPerfil = new System.Windows.Forms.Button();
+            this.btnEvaluaciones = new System.Windows.Forms.Button();
             this.panelBarra = new System.Windows.Forms.Panel();
             this.btnminimizar = new System.Windows.Forms.PictureBox();
             this.btnrestaurar = new System.Windows.Forms.PictureBox();
@@ -62,6 +61,7 @@
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.panelMenu.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panelDespegable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelBarra.SuspendLayout();
@@ -134,50 +134,87 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.panelMenu.Controls.Add(this.panelDespegable);
             this.panelMenu.Controls.Add(this.panel5);
-            this.panelMenu.Controls.Add(this.btnconf);
-            this.panelMenu.Controls.Add(this.panel4);
-            this.panelMenu.Controls.Add(this.btnCerrarSesion);
+            this.panelMenu.Controls.Add(this.panelDespegable);
             this.panelMenu.Controls.Add(this.panel3);
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Controls.Add(this.pictureBox3);
-            this.panelMenu.Controls.Add(this.btnHorario);
             this.panelMenu.Controls.Add(this.btnCursos);
             this.panelMenu.Controls.Add(this.btnPerfil);
+            this.panelMenu.Controls.Add(this.btnEvaluaciones);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 30);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 497);
             this.panelMenu.TabIndex = 1;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel4);
+            this.panel5.Controls.Add(this.btnCerrarSesion);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 457);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(220, 40);
+            this.panel5.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(5, 40);
+            this.panel4.TabIndex = 9;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
+            this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.Image")));
+            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 0);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(220, 40);
+            this.btnCerrarSesion.TabIndex = 8;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // panelDespegable
             // 
             this.panelDespegable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.panelDespegable.Controls.Add(this.btnayuda);
+            this.panelDespegable.Controls.Add(this.btnVerEvaluaciones);
             this.panelDespegable.Controls.Add(this.btnconfuser);
-            this.panelDespegable.Location = new System.Drawing.Point(-1, 226);
+            this.panelDespegable.Location = new System.Drawing.Point(0, 180);
             this.panelDespegable.Name = "panelDespegable";
             this.panelDespegable.Size = new System.Drawing.Size(221, 74);
             this.panelDespegable.TabIndex = 12;
             // 
-            // btnayuda
+            // btnVerEvaluaciones
             // 
-            this.btnayuda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnayuda.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnayuda.FlatAppearance.BorderSize = 0;
-            this.btnayuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.btnayuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.btnayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnayuda.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnayuda.ForeColor = System.Drawing.Color.White;
-            this.btnayuda.Location = new System.Drawing.Point(0, 36);
-            this.btnayuda.Name = "btnayuda";
-            this.btnayuda.Size = new System.Drawing.Size(221, 36);
-            this.btnayuda.TabIndex = 1;
-            this.btnayuda.Text = "Ayuda";
-            this.btnayuda.UseVisualStyleBackColor = true;
+            this.btnVerEvaluaciones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerEvaluaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVerEvaluaciones.FlatAppearance.BorderSize = 0;
+            this.btnVerEvaluaciones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
+            this.btnVerEvaluaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
+            this.btnVerEvaluaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerEvaluaciones.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerEvaluaciones.ForeColor = System.Drawing.Color.White;
+            this.btnVerEvaluaciones.Location = new System.Drawing.Point(0, 36);
+            this.btnVerEvaluaciones.Name = "btnVerEvaluaciones";
+            this.btnVerEvaluaciones.Size = new System.Drawing.Size(221, 36);
+            this.btnVerEvaluaciones.TabIndex = 1;
+            this.btnVerEvaluaciones.Text = "Ver evaluaciones";
+            this.btnVerEvaluaciones.UseVisualStyleBackColor = true;
+            this.btnVerEvaluaciones.Click += new System.EventHandler(this.btnVerEvaluaciones_Click);
             // 
             // btnconfuser
             // 
@@ -193,64 +230,9 @@
             this.btnconfuser.Name = "btnconfuser";
             this.btnconfuser.Size = new System.Drawing.Size(221, 36);
             this.btnconfuser.TabIndex = 0;
-            this.btnconfuser.Text = "Configurar Usuario";
+            this.btnconfuser.Text = "Crear evaluación";
             this.btnconfuser.UseVisualStyleBackColor = true;
-            this.btnconfuser.Click += new System.EventHandler(this.btnconfuser_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.panel5.Location = new System.Drawing.Point(1, 185);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(5, 40);
-            this.panel5.TabIndex = 11;
-            // 
-            // btnconf
-            // 
-            this.btnconf.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnconf.FlatAppearance.BorderSize = 0;
-            this.btnconf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.btnconf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.btnconf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnconf.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconf.ForeColor = System.Drawing.Color.White;
-            this.btnconf.Image = ((System.Drawing.Image)(resources.GetObject("btnconf.Image")));
-            this.btnconf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnconf.Location = new System.Drawing.Point(-1, 185);
-            this.btnconf.Name = "btnconf";
-            this.btnconf.Size = new System.Drawing.Size(221, 40);
-            this.btnconf.TabIndex = 10;
-            this.btnconf.Text = "Configurar";
-            this.btnconf.UseVisualStyleBackColor = true;
-            this.btnconf.Click += new System.EventHandler(this.btnconf_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.panel4.Location = new System.Drawing.Point(0, 457);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(5, 40);
-            this.panel4.TabIndex = 9;
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
-            this.btnCerrarSesion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnCerrarSesion.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.Image")));
-            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 457);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(220, 40);
-            this.btnCerrarSesion.TabIndex = 8;
-            this.btnCerrarSesion.Text = "Cerrar Sesion";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            this.btnconfuser.Click += new System.EventHandler(this.btnCrearEvaluacion);
             // 
             // panel3
             // 
@@ -288,25 +270,6 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // btnHorario
-            // 
-            this.btnHorario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHorario.FlatAppearance.BorderSize = 0;
-            this.btnHorario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.btnHorario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.btnHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHorario.ForeColor = System.Drawing.Color.White;
-            this.btnHorario.Image = ((System.Drawing.Image)(resources.GetObject("btnHorario.Image")));
-            this.btnHorario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHorario.Location = new System.Drawing.Point(0, 139);
-            this.btnHorario.Name = "btnHorario";
-            this.btnHorario.Size = new System.Drawing.Size(221, 40);
-            this.btnHorario.TabIndex = 2;
-            this.btnHorario.Text = "Horario";
-            this.btnHorario.UseVisualStyleBackColor = true;
-            this.btnHorario.Click += new System.EventHandler(this.btnHorario_Click);
-            // 
             // btnCursos
             // 
             this.btnCursos.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -343,6 +306,25 @@
             this.btnPerfil.TabIndex = 0;
             this.btnPerfil.UseVisualStyleBackColor = true;
             this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
+            // 
+            // btnEvaluaciones
+            // 
+            this.btnEvaluaciones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEvaluaciones.FlatAppearance.BorderSize = 0;
+            this.btnEvaluaciones.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
+            this.btnEvaluaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
+            this.btnEvaluaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEvaluaciones.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEvaluaciones.ForeColor = System.Drawing.Color.White;
+            this.btnEvaluaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnEvaluaciones.Image")));
+            this.btnEvaluaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEvaluaciones.Location = new System.Drawing.Point(1, 139);
+            this.btnEvaluaciones.Name = "btnEvaluaciones";
+            this.btnEvaluaciones.Size = new System.Drawing.Size(237, 40);
+            this.btnEvaluaciones.TabIndex = 10;
+            this.btnEvaluaciones.Text = "Evaluaciones";
+            this.btnEvaluaciones.UseVisualStyleBackColor = true;
+            this.btnEvaluaciones.Click += new System.EventHandler(this.btnEvaluaciones_Click);
             // 
             // panelBarra
             // 
@@ -443,6 +425,7 @@
             this.panelForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.panelMenu.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panelDespegable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelBarra.ResumeLayout(false);
@@ -463,7 +446,6 @@
         private System.Windows.Forms.PictureBox btnmaximizar;
         private System.Windows.Forms.PictureBox btnminimizar;
         private System.Windows.Forms.PictureBox btnrestaurar;
-        private System.Windows.Forms.Button btnHorario;
         private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.Button btnPerfil;
         private System.Windows.Forms.Panel panelForm;
@@ -476,14 +458,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnCerrarSesion;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnconf;
+        private System.Windows.Forms.Button btnEvaluaciones;
         private System.Windows.Forms.Panel panelDespegable;
-        private System.Windows.Forms.Button btnayuda;
+        private System.Windows.Forms.Button btnVerEvaluaciones;
         private System.Windows.Forms.Button btnconfuser;
         private System.Windows.Forms.Label lbfecha;
         private System.Windows.Forms.Label lbHora;
         private System.Windows.Forms.Timer tmHoraFecha;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 

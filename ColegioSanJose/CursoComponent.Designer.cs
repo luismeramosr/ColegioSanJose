@@ -54,7 +54,6 @@
             this.pbCursoImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbCursoImg.TabIndex = 3;
             this.pbCursoImg.TabStop = false;
-            this.pbCursoImg.Click += new System.EventHandler(this.pbCursoImg_Click);
             this.pbCursoImg.MouseEnter += new System.EventHandler(this.pbCursoImg_MouseEnter);
             this.pbCursoImg.MouseLeave += new System.EventHandler(this.pbCursoImg_MouseLeave);
             // 
@@ -97,6 +96,6 @@
         private System.Windows.Forms.Panel panelCurso;
         private System.Windows.Forms.Panel panelCursoNombre;
         private System.Windows.Forms.Label lbCursoNombre;
-        private System.Windows.Forms.PictureBox pbCursoImg;
+        public System.Windows.Forms.PictureBox pbCursoImg;
     }
 }

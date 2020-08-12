@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Domain;
 
 namespace ColegioSanJose
 {
@@ -15,8 +16,18 @@ namespace ColegioSanJose
             InitializeComponent();
             Designsubmenu();
             this.data = data;
-            btnPerfil.Text = data["userType"].ToString();
-            this.data = data;
+            initConf();
+        }   
+
+        private void initConf()
+        {
+            if (((Usuario)data["user"]).isAlumno())
+            {
+                btnPerfil.Text = "Alumno";
+                btnEvaluaciones.Hide();
+            }                
+            else if (((Usuario)data["user"]).isDocente())
+                btnPerfil.Text = "Docente";
         }
 
         
@@ -122,8 +133,7 @@ namespace ColegioSanJose
 
         private Form activeForm()
         {
-            return isMaximized ? (Form)panelForm.GetChildAtPoint(new Point(400, 150)): 
-                                    new Form();
+            return (Form) panelForm.Controls[0];
         }
 
         private void actualizarForm()
@@ -230,22 +240,37 @@ namespace ColegioSanJose
         private void btnCursos_Click(object sender, EventArgs e)
         {
             abrirFormBtnCursos();
+            foreach (CursoComponent comp in ((FormBtnCursos) activeForm()).cursoComponents)
+            {
+                comp.pbCursoImg.Click += Comp_Click;
+            }
             btnCursos.BackColor = Color.FromArgb(12, 61, 92);
+            btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
+            btnEvaluaciones.BackColor = Color.FromArgb(28, 28, 28);
+        }
+
+        private void Comp_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Curso clickeado!");
+            if (((Usuario)data["user"]).isAlumno())
+                Abrirformulario<FormEvAlumno>();
+            else if (((Usuario)data["user"]).isDocente())
+                Abrirformulario<FormEvDocente>();
         }
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            AbrirFormularioPerfil();
-            
+            AbrirFormularioPerfil();            
             btnPerfil.BackColor = Color.FromArgb(12, 61, 92);
-
+            btnCursos.BackColor = Color.FromArgb(28, 28, 28);
+            btnEvaluaciones.BackColor = Color.FromArgb(28, 28, 28);
         }
 
         private void cerrarform(object sender,FormClosedEventArgs e)
         {
-            if (Application.OpenForms["FormPerfilUser"] == null)
+            if (Application.OpenForms["FormPerfilUser"] != null)
                 btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
-            if (Application.OpenForms["FormBtnCursos"] == null)
+            if (Application.OpenForms["FormBtnCursos"] != null)
                 btnCursos.BackColor = Color.FromArgb(28, 28, 28);
             //if (Application.OpenForms["Form3"] == null)
             //    btnHorario.BackColor = Color.FromArgb(28, 28, 28);
@@ -256,15 +281,20 @@ namespace ColegioSanJose
         #endregion
 
         #region Timer panelMenu
+        bool isVisible=true;
+        string btnCerrarSesionText;
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             if (panelMenu.Width == 220)
             {
                 tmOcultarMenu.Enabled = true;
+                btnCerrarSesionText = btnCerrarSesion.Text;
+                btnCerrarSesion.Text = "";
             }
             else if (panelMenu.Width == 60)
             {
                 tmMostrarMenu.Enabled = true;
+                btnCerrarSesion.Text = btnCerrarSesionText;
             }
 
 
@@ -318,9 +348,13 @@ namespace ColegioSanJose
                 submenu.Visible = false;
             }
         }
-        private void btnconf_Click(object sender, EventArgs e)
+        private void btnEvaluaciones_Click(object sender, EventArgs e)
         {
-            showsubmenu(panelDespegable);            
+            showsubmenu(panelDespegable);
+            btnEvaluaciones.BackColor = Color.FromArgb(12, 61, 92);
+            btnCursos.BackColor = Color.FromArgb(28, 28, 28);
+            btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
+            //
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -329,16 +363,16 @@ namespace ColegioSanJose
             (new FormLogin()).Show();
         }
 
-        private void btnHorario_Click(object sender, EventArgs e)
+        private void btnCrearEvaluacion(object sender, EventArgs e)
         {
             Abrirformulario<FormCrearEvaluacion>();
+            btnCursos.BackColor = Color.FromArgb(28, 28, 28);
+            btnPerfil.BackColor = Color.FromArgb(28, 28, 28);
         }
 
-        private void btnconfuser_Click(object sender, EventArgs e)
+        private void btnVerEvaluaciones_Click(object sender, EventArgs e)
         {
-            //Abrirformulario<Form4_submenu>();
-            //btnconfuser.BackColor = Color.FromArgb(12, 61, 92);
-            //hidesubmenu();
+            Abrirformulario<FormEvDocente>();
         }
         #endregion
 

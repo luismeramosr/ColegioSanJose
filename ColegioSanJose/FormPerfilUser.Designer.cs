@@ -357,11 +357,12 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.AutoSize = true;
             this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.SlateGray;
             this.txtEmail.Location = new System.Drawing.Point(166, 261);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(228, 22);
+            this.txtEmail.Size = new System.Drawing.Size(46, 22);
             this.txtEmail.TabIndex = 11;
             this.txtEmail.Text = "mail";
             // 
@@ -390,7 +391,7 @@
             this.pldatos.Controls.Add(this.txtApellido);
             this.pldatos.Location = new System.Drawing.Point(12, 86);
             this.pldatos.Name = "pldatos";
-            this.pldatos.Size = new System.Drawing.Size(402, 299);
+            this.pldatos.Size = new System.Drawing.Size(468, 299);
             this.pldatos.TabIndex = 12;
             // 
             // FormPerfilUser
@@ -398,9 +399,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 470);
-            this.Controls.Add(this.pldatos);
             this.Controls.Add(this.plEditarDatos);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pldatos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormPerfilUser";
             this.Text = "FormPerfilUser";

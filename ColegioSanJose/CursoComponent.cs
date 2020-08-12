@@ -36,11 +36,6 @@ namespace ColegioSanJose
             pbCursoImg.Cursor = Cursors.Default;
         }
 
-        private void pbCursoImg_Click(object sender, EventArgs e)
-        {
-            // Cargar formulario de evaluaciones
-        }
-
         public void relocate(Point newLocation)
         {
             Location = newLocation;

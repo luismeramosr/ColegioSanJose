@@ -22,8 +22,7 @@ namespace ColegioSanJose
                 msgError("El código o contraseña ingresado es incorrecto o no existe");         
         }
 
-        MySQLManager db = new MySQLManager("192.168.1.100","root", "123", "apolloma_Colegio");
-        //MySQLManager db = new MySQLManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+        MySQLManager db = new MySQLManager("gator4125.hostgator.com", "apolloma_root", "!Rg[5b1mzuOV", "apolloma_Colegio");
 
         #region Login
         private bool login(string user, string password)
@@ -38,7 +37,6 @@ namespace ColegioSanJose
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
                     Alumno alu = db.readRow(new Alumno(), user);
                     List<Curso> cursos = db.readTable<Curso>(alu.Seccion, 1);
-                    data.Add("userType", "Alumno");
                     data.Add("user", newUser);
                     data.Add("cursos", cursos);
                     (new FormPrincipal(data)).Show();
@@ -49,8 +47,9 @@ namespace ColegioSanJose
                 {
                     Console.WriteLine("Ingreso: " + newUser.idUsuario);
                     Docente doc = db.readRow(new Docente(), user);
-                    data.Add("userType", "Docente");
+                    List<Curso> cursos = db.readTable<Curso>(doc.idDocente, 2);
                     data.Add("user", newUser);
+                    data.Add("cursos", cursos);
                     (new FormPrincipal(data)).Show();
                     this.Close();
                     return true;
