@@ -1,11 +1,11 @@
 Proyecto San Jose Readme
 
 # Proyecto colegio San Jose
-<div style="text-align:center">
+<p align="center">
 <a href="https://www.google.com">
 <img src="http://www.colegioparroquialsanjose.edu.pe/images/img-presentacion.png"/>
 </a>
-</div>
+</p>
 
 ## Proyecto de 3er ciclo para los cursos:
 - Análisis y diseño de sistemas.
@@ -21,7 +21,7 @@ Proyecto San Jose Readme
 </p>
 <p align="center">
 	<a href="https://github.com/luismeramosr/ColegioSanJose/releases/download/v0.1-alpha/ColegioSanJose.msi"><img src="https://img.shields.io/github/downloads/luismeramosr/ColegioSanJose/total?label=Descargas"></a>
-	<img src="https://img.shields.io/github/v/release/luismeramosr/ColegioSanJose?label=Versión">
+	<a href="https://github.com/luismeramosr/ColegioSanJose/releases/tag/v0.1-alpha"><img src="https://img.shields.io/github/v/release/luismeramosr/ColegioSanJose?include_prereleases"></a>
 </p>
 
 **Vista previa**
