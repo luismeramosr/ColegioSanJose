@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalib", "Datalib\Datalib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColegioSanJose", "ColegioSanJose\ColegioSanJose.csproj", "{8DB735A2-02DD-4731-8872-196CD29BD831}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ProyectoColegioSanJose", "ProyectoColegioSanJose\ProyectoColegioSanJose.vdproj", "{FA19D327-7BD7-43E4-96FD-E52705F9457F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{8DB735A2-02DD-4731-8872-196CD29BD831}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DB735A2-02DD-4731-8872-196CD29BD831}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DB735A2-02DD-4731-8872-196CD29BD831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA19D327-7BD7-43E4-96FD-E52705F9457F}.Debug|Any CPU.ActiveCfg = Debug
+		{FA19D327-7BD7-43E4-96FD-E52705F9457F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
