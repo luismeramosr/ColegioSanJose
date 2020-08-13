@@ -1,5 +1,3 @@
-Proyecto San Jose Readme
-
 # Proyecto colegio San Jose
 <p align="center">
 <a href="https://www.google.com">
