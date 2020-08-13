@@ -28,7 +28,7 @@ namespace ColegioSanJose
             int i = 1;
             foreach (Curso cur in cursos)
             {
-                Image img = Image.FromFile(string.Format(@"..\..\Resources\{0}.png",i));
+                Image img = Image.FromFile(string.Format(@".\Resources\{0}.png",i));
                 cursoComponents.Add(new CursoComponent(cur.nombre, img));
                 i++;
             }            

@@ -98,23 +98,24 @@
             // 
             // lbfecha
             // 
-            this.lbfecha.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbfecha.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbfecha.AutoSize = true;
             this.lbfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbfecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbfecha.Location = new System.Drawing.Point(109, 375);
+            this.lbfecha.Location = new System.Drawing.Point(88, 387);
             this.lbfecha.Name = "lbfecha";
             this.lbfecha.Size = new System.Drawing.Size(126, 46);
             this.lbfecha.TabIndex = 2;
             this.lbfecha.Text = "label1";
+            this.lbfecha.Click += new System.EventHandler(this.lbfecha_Click);
             // 
             // lbHora
             // 
-            this.lbHora.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbHora.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbHora.AutoSize = true;
             this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.lbHora.Location = new System.Drawing.Point(150, 262);
+            this.lbHora.Location = new System.Drawing.Point(220, 296);
             this.lbHora.Name = "lbHora";
             this.lbHora.Size = new System.Drawing.Size(249, 91);
             this.lbHora.TabIndex = 1;
@@ -122,9 +123,10 @@
             // 
             // imgLogo
             // 
-            this.imgLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imgLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(210, -5);
+            this.imgLogo.Location = new System.Drawing.Point(221, 0);
             this.imgLogo.Name = "imgLogo";
             this.imgLogo.Size = new System.Drawing.Size(346, 293);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

@@ -100,7 +100,7 @@ namespace ColegioSanJose
             btnmaximizar.Visible = false;
             btnrestaurar.Visible = true;
             actualizarForm();
-
+            reorderCursos();
         }
 
         private void btnrestaurar_Click(object sender, EventArgs e)
@@ -112,6 +112,7 @@ namespace ColegioSanJose
             this.Location = new Point(lx, ly);
             panelForm.Size = new Size(sw,sh);
             actualizarForm();
+            reorderCursos();
         }
 
         private void btnminimizar_Click(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace ColegioSanJose
 
         private Form activeForm()
         {
-            return (Form) panelForm.Controls[0];
+           return (Form)panelForm.GetChildAtPoint(new Point(5,5));           
         }
 
         private void actualizarForm()
@@ -375,6 +376,11 @@ namespace ColegioSanJose
         {
             Abrirformulario<FormEvDocente>();
         }
+
+        private void lbfecha_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
         #region Hora y fecha
@@ -387,14 +393,17 @@ namespace ColegioSanJose
 
         private void reloadPanel(object sender, EventArgs e)
         {
+            reorderCursos();
+        }
+
+        private void reorderCursos()
+        {
             if (formulario.GetType().Equals(typeof(FormBtnCursos)))
             {
                 FormBtnCursos form = (FormBtnCursos)formulario;
                 Console.WriteLine(form.getRows() + " " + form.getColumns());
                 form.orderComponents(form.getRows(), form.getColumns());
             }
-            
-
         }
     }
 }
