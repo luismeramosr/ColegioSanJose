@@ -102,7 +102,7 @@
             this.lbfecha.AutoSize = true;
             this.lbfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbfecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lbfecha.Location = new System.Drawing.Point(143, 380);
+            this.lbfecha.Location = new System.Drawing.Point(109, 375);
             this.lbfecha.Name = "lbfecha";
             this.lbfecha.Size = new System.Drawing.Size(126, 46);
             this.lbfecha.TabIndex = 2;
@@ -114,7 +114,7 @@
             this.lbHora.AutoSize = true;
             this.lbHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(114)))), ((int)(((byte)(184)))));
-            this.lbHora.Location = new System.Drawing.Point(221, 262);
+            this.lbHora.Location = new System.Drawing.Point(150, 262);
             this.lbHora.Name = "lbHora";
             this.lbHora.Size = new System.Drawing.Size(249, 91);
             this.lbHora.TabIndex = 1;
@@ -413,6 +413,7 @@
             this.ClientSize = new System.Drawing.Size(1000, 527);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(650, 400);
             this.Name = "FormPrincipal";
             this.Opacity = 0.95D;

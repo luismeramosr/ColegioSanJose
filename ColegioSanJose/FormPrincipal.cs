@@ -25,6 +25,7 @@ namespace ColegioSanJose
             {
                 btnPerfil.Text = "Alumno";
                 btnEvaluaciones.Hide();
+                panel3.Hide();
             }                
             else if (((Usuario)data["user"]).isDocente())
                 btnPerfil.Text = "Docente";

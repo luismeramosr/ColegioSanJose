@@ -18,8 +18,8 @@ namespace ColegioSanJose
         Dictionary<string, object> data;
         int lx, ly;
 
-        //MySQLManager db = new MySQLManager("gator4125.hostgator.com", "apolloma_root", "!Rg[5b1mzuOV", "apolloma_Colegio");
-        MySQLManager db = new MySQLManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
+        MySQLManager db = new MySQLManager("gator4125.hostgator.com", "apolloma_root", "!Rg[5b1mzuOV", "apolloma_Colegio");
+        //MySQLManager db = new MySQLManager("localhost", "3306", "root", "SYSTEM", "apolloma_Colegio");
 
         public FormPerfilUser(Dictionary<string, object> data)
         {
